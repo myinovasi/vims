@@ -9,11 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
-    
-    <script src="capacitor.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js">
+    </script>
+
+    <script src="capacitor.js">
+    </script>
 
     <style>
         :root {
@@ -27,9 +31,9 @@
             --border: #e0e3e8;
             --success: #1e7b4a;
             --danger: #c0392b;
-            --shadow-sm: 0 2px 6px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
+            --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
             --radius-sm: 10px;
             --radius: 14px;
             --radius-lg: 18px;
@@ -41,8 +45,15 @@
             --kpi-violet: #8b5cf6;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
 
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -57,43 +68,109 @@
         }
 
         .top-banner {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             background: linear-gradient(135deg, #0f2440 0%, #1a3c6e 30%, #1e4d8c 60%, #16325c 100%);
-            padding: 10px 14px; display: flex; align-items: center; gap: 11px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.25); border-bottom: 2.5px solid var(--accent);
-            min-height: 68px; transition: padding 0.3s ease;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            border-bottom: 2.5px solid var(--accent);
+            min-height: 68px;
+            transition: padding 0.3s ease;
         }
         .top-banner::after {
-            content: ''; position: absolute; bottom: -2.5px; left: 0; right: 0; height: 2.5px;
+            content: '';
+            position: absolute;
+            bottom: -2.5px;
+            left: 0;
+            right: 0;
+            height: 2.5px;
             background: linear-gradient(90deg, transparent 0%, var(--accent) 20%, #f0d878 40%, var(--accent) 60%, #f0d878 80%, transparent 100%);
-            background-size: 200% 100%; animation: shimmer 4s ease-in-out infinite;
+            background-size: 200% 100%;
+            animation: shimmer 4s ease-in-out infinite;
         }
-        @keyframes shimmer { 0%,100% { background-position: -200% 0; } 50% { background-position: 200% 0; } }
+        @keyframes shimmer {
+            0%,
+            100% {
+                background-position: -200% 0;
+            }
+            50% {
+                background-position: 200% 0;
+            }
+        }
 
-        .jata-img { flex-shrink: 0; height: 48px; width: auto; object-fit: contain; filter: brightness(1.06) contrast(1.08); }
-        .title-group { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+        .jata-img {
+            flex-shrink: 0;
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(1.06) contrast(1.08);
+        }
+        .title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            flex: 1;
+            min-width: 0;
+        }
         .main-title {
-            font-size: 1.0rem; font-weight: 800; color: #fff; letter-spacing: -0.01em;
-            line-height: 1.2; text-align: left; text-shadow: 0 2px 4px rgba(0,0,0,0.3); word-break: break-word;
+            font-size: 1.0rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            text-align: left;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            word-break: break-word;
         }
         .sub-title {
-            font-size: 0.65rem; font-weight: 400; color: rgba(255,255,255,0.82);
-            letter-spacing: 0.02em; line-height: 1.25; text-align: left; text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.82);
+            letter-spacing: 0.02em;
+            line-height: 1.25;
+            text-align: left;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
         .clinic-name {
-            font-size: 0.6rem; font-weight: 400; color: rgba(255,255,255,0.75);
-            letter-spacing: 0.03em; text-align: left;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 0.03em;
+            text-align: left;
         }
 
         .logout-btn {
-            background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #fff; padding: 6px 12px; border-radius: 8px; font-family: 'Poppins', sans-serif;
-            font-size: 0.65rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
-            margin-left: auto; text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: auto;
+            text-transform: uppercase;
         }
-        .logout-btn:hover { background: rgba(255, 255, 255, 0.25); }
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
 
-        .main-content { max-width: 480px; margin: 0 auto; padding: 0 12px 20px; display: flex; flex-direction: column; gap: 14px; }
+        .main-content {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 12px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
 
         .info-bar {
             background: #ffffff;
@@ -126,208 +203,668 @@
             word-break: break-word;
         }
 
-        .dashboard-section { margin-top: 0; padding: 0; background: transparent; box-shadow: none; border-radius: 0; }
-        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .dashboard-section {
+            margin-top: 0;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+            border-radius: 0;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
 
         .kpi-card {
-            border-radius: var(--radius); padding: 16px 12px; box-shadow: var(--shadow-sm);
-            display: flex; flex-direction: column; gap: 4px; position: relative; min-height: 108px;
-            overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); border: none;
+            border-radius: var(--radius);
+            padding: 16px 12px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            position: relative;
+            min-height: 108px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: none;
         }
-        .kpi-card.editable { cursor: pointer; }
-        .kpi-card.editable:active { transform: scale(0.97); }
-
-        .card-diterima { background-color: var(--kpi-blue); }
-        .card-diguna { background-color: var(--kpi-green); }
-        .card-simpanan { background-color: var(--kpi-amber); }
-        .card-baki { background-color: var(--kpi-violet); }
-
-        .kpi-card::before, .kpi-card::after {
-            content: ''; position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
-            background: rgba(255,255,255,0.12);
+        .kpi-card.editable {
+            cursor: pointer;
         }
-        .card-diterima::before { width: 70px; height: 70px; top: -15px; right: -10px; }
-        .card-diterima::after { width: 45px; height: 45px; bottom: 8px; left: -10px; background: rgba(255,255,255,0.18); }
-        .card-diguna::before { width: 65px; height: 65px; top: -12px; left: 10px; }
-        .card-diguna::after { width: 50px; height: 50px; bottom: -8px; right: 10px; background: rgba(255,255,255,0.15); }
-        .card-simpanan::before { width: 55px; height: 55px; top: 15px; right: -10px; }
-        .card-simpanan::after { width: 75px; height: 75px; bottom: -20px; left: -15px; background: rgba(255,255,255,0.10); }
-        .card-baki::before { width: 60px; height: 60px; top: -18px; left: 20px; }
-        .card-baki::after { width: 40px; height: 40px; bottom: 10px; right: -5px; background: rgba(255,255,255,0.18); }
+        .kpi-card.editable:active {
+            transform: scale(0.97);
+        }
 
-        .kpi-card>* { position: relative; z-index: 1; }
-        .card-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: rgba(255,255,255,0.85); }
-        .card-value { font-size: 2.2rem; font-weight: 700; line-height: 1; color: #fff; }
-        .card-sub { font-size: 0.62rem; font-weight: 400; color: rgba(255,255,255,0.7); }
+        .card-diterima {
+            background-color: var(--kpi-blue);
+        }
+        .card-diguna {
+            background-color: var(--kpi-green);
+        }
+        .card-simpanan {
+            background-color: var(--kpi-amber);
+        }
+        .card-baki {
+            background-color: var(--kpi-violet);
+        }
 
-        .storage-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
-        .storage-row.clickable { cursor: pointer; }
-        .storage-label { font-size: 0.7rem; font-weight: 500; color: rgba(255,255,255,0.9); }
-        .storage-value { font-size: 0.95rem; font-weight: 700; color: #fff; }
+        .kpi-card::before,
+        .kpi-card::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .card-diterima::before {
+            width: 70px;
+            height: 70px;
+            top: -15px;
+            right: -10px;
+        }
+        .card-diterima::after {
+            width: 45px;
+            height: 45px;
+            bottom: 8px;
+            left: -10px;
+            background: rgba(255, 255, 255, 0.18);
+        }
+        .card-diguna::before {
+            width: 65px;
+            height: 65px;
+            top: -12px;
+            left: 10px;
+        }
+        .card-diguna::after {
+            width: 50px;
+            height: 50px;
+            bottom: -8px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .card-simpanan::before {
+            width: 55px;
+            height: 55px;
+            top: 15px;
+            right: -10px;
+        }
+        .card-simpanan::after {
+            width: 75px;
+            height: 75px;
+            bottom: -20px;
+            left: -15px;
+            background: rgba(255, 255, 255, 0.10);
+        }
+        .card-baki::before {
+            width: 60px;
+            height: 60px;
+            top: -18px;
+            left: 20px;
+        }
+        .card-baki::after {
+            width: 40px;
+            height: 40px;
+            bottom: 10px;
+            right: -5px;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .kpi-card>* {
+            position: relative;
+            z-index: 1;
+        }
+        .card-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .card-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+        }
+        .card-sub {
+            font-size: 0.62rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .storage-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+        }
+        .storage-row.clickable {
+            cursor: pointer;
+        }
+        .storage-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .storage-value {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+        }
 
         .daftar-rekod-btn {
-            width: 100%; background: linear-gradient(135deg, #1a3c6e 0%, #2a5298 100%);
-            color: #fff; border: none; border-radius: 12px; padding: 15px;
-            font-weight: 700; font-size: 1rem; letter-spacing: 0.03em;
-            text-transform: uppercase; box-shadow: 0 4px 14px rgba(26,60,110,0.25);
-            cursor: pointer; transition: transform 0.2s; display: flex; align-items: center;
-            justify-content: center; gap: 6px;
+            width: 100%;
+            background: linear-gradient(135deg, #1a3c6e 0%, #2a5298 100%);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 14px rgba(26, 60, 110, 0.25);
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
-        .daftar-rekod-btn:active { transform: scale(0.98); }
+        .daftar-rekod-btn:active {
+            transform: scale(0.98);
+        }
 
         .form-section {
-            background: var(--card-bg); border-radius: var(--radius-lg);
-            padding: 0; max-height: 0; overflow: hidden;
-            transition: max-height 0.45s ease, padding 0.45s ease; border: 1px solid transparent;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, padding 0.45s ease;
+            border: 1px solid transparent;
         }
-        .form-section.expanded { max-height: 1200px; padding: 18px 16px; border-color: var(--border); box-shadow: var(--shadow-md); }
-        .form-header { font-weight: 600; font-size: 0.95rem; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #eef0f4; }
-        .form-group { margin-bottom: 12px; }
-        .form-label { display: block; font-weight: 500; font-size: 0.73rem; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; }
-        
+        .form-section.expanded {
+            max-height: 1200px;
+            padding: 18px 16px;
+            border-color: var(--border);
+            box-shadow: var(--shadow-md);
+        }
+        .form-header {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eef0f4;
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        .form-label {
+            display: block;
+            font-weight: 500;
+            font-size: 0.73rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
         .form-input {
-            width: 100%; font-family: 'Poppins', sans-serif; font-size: 0.85rem;
-            padding: 11px 12px; border: 2px solid var(--border); transition: all 0.2s ease;
-            border-radius: var(--radius-sm); background: #fafbfc; color: var(--text); outline: none;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            padding: 11px 12px;
+            border: 2px solid var(--border);
+            transition: all 0.2s ease;
+            border-radius: var(--radius-sm);
+            background: #fafbfc;
+            color: var(--text);
+            outline: none;
         }
-        .form-input:focus { border-color: #2a5298; background: #fff; box-shadow: 0 0 0 4px rgba(42,82,152,0.06); }
-        .form-input[readonly] { background: #eef1f6; color: #3b3b4a; font-weight: 600; }
-        select.form-input, input[type="date"].form-input { cursor: pointer; }
-        
-        .komorbid-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+        .form-input:focus {
+            border-color: #2a5298;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(42, 82, 152, 0.06);
+        }
+        .form-input[readonly] {
+            background: #eef1f6;
+            color: #3b3b4a;
+            font-weight: 600;
+        }
+        select.form-input,
+        input[type="date"].form-input {
+            cursor: pointer;
+        }
+
+        .komorbid-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
         .komorbid-item {
-            display: flex; align-items: center; gap: 6px; background: #f4f6fa;
-            padding: 8px 12px; border-radius: 22px; cursor: pointer;
-            transition: all 0.15s ease; border: 2px solid transparent; user-select: none;
-            font-size: 0.78rem; font-weight: 500; color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #f4f6fa;
+            padding: 8px 12px;
+            border-radius: 22px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border: 2px solid transparent;
+            user-select: none;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text);
         }
-        .komorbid-item.selected { background: #e0e8f5; border-color: #2a5298; color: #1a3c6e; font-weight: 600; }
-        .komorbid-item input { display: none; }
-        .komorbid-dot { width: 10px; height: 10px; border-radius: 50%; background: #c5cdd8; transition: background 0.15s; flex-shrink: 0; }
-        .komorbid-item.selected .komorbid-dot { background: #2a5298; }
-        
-        .form-buttons { display: flex; gap: 10px; margin-top: 8px; }
-        .form-buttons .btn { font-size: 0.8rem; padding: 12px; border-radius: 10px; border: none; cursor: pointer; transition: all 0.2s ease; width: 100%; }
-        .btn-primary { background: linear-gradient(135deg, #1a3c6e 0%, #2a5298 100%); color: #fff; box-shadow: 0 4px 14px rgba(26,60,110,0.25); }
-        .btn-outline { background: #fff; color: #1a3c6e; border: 2px solid #1a3c6e; }
+        .komorbid-item.selected {
+            background: #e0e8f5;
+            border-color: #2a5298;
+            color: #1a3c6e;
+            font-weight: 600;
+        }
+        .komorbid-item input {
+            display: none;
+        }
+        .komorbid-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #c5cdd8;
+            transition: background 0.15s;
+            flex-shrink: 0;
+        }
+        .komorbid-item.selected .komorbid-dot {
+            background: #2a5298;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .form-buttons .btn {
+            font-size: 0.8rem;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1a3c6e 0%, #2a5298 100%);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(26, 60, 110, 0.25);
+        }
+        .btn-outline {
+            background: #fff;
+            color: #1a3c6e;
+            border: 2px solid #1a3c6e;
+        }
 
         .records-section {
-            background: var(--card-bg); border-radius: var(--radius-lg);
-            padding: 16px; box-shadow: var(--shadow-md); border: 1px solid var(--border);
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
         }
-        .records-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 2px solid #eef0f4; }
-        .records-title { font-weight: 600; font-size: 0.9rem; }
-        .records-count { margin-left: auto; background: #e6f4ea; color: #1e7b4a; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
-        
-        .mobile-records { display: block; }
-        .desktop-records { display: none; }
-        
-        .record-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 6px; border-bottom: 1px solid #eef0f4; }
-        .record-item:last-child { border-bottom: none; }
+        .records-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eef0f4;
+        }
+        .records-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .records-count {
+            margin-left: auto;
+            background: #e6f4ea;
+            color: #1e7b4a;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .mobile-records {
+            display: block;
+        }
+        .desktop-records {
+            display: none;
+        }
+
+        .record-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 6px;
+            border-bottom: 1px solid #eef0f4;
+        }
+        .record-item:last-child {
+            border-bottom: none;
+        }
         .record-avatar {
-            width: 36px; height: 36px; border-radius: 50%; background: #e8f0fb;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 0.75rem; color: #1a3c6e; flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #e8f0fb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: #1a3c6e;
+            flex-shrink: 0;
         }
-        .record-info { flex: 1; min-width: 0; }
-        .record-name { font-weight: 600; font-size: 0.82rem; }
-        .record-detail { font-size: 0.66rem; color: var(--text-secondary); line-height: 1.4; margin-top: 2px; }
-        .record-timestamp { font-size: 0.6rem; color: var(--text-secondary); opacity: 0.7; margin-top: 4px; }
-        .record-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-        .komorbid-badge { font-size: 0.58rem; padding: 2px 7px; border-radius: 12px; background: #fff0e0; color: #b87a14; font-weight: 500; }
-        
-        .action-group { display: flex; gap: 6px; align-items: center; }
+        .record-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .record-name {
+            font-weight: 600;
+            font-size: 0.82rem;
+        }
+        .record-detail {
+            font-size: 0.66rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            margin-top: 2px;
+        }
+        .record-timestamp {
+            font-size: 0.6rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+        .record-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 4px;
+        }
+        .komorbid-badge {
+            font-size: 0.58rem;
+            padding: 2px 7px;
+            border-radius: 12px;
+            background: #fff0e0;
+            color: #b87a14;
+            font-weight: 500;
+        }
+
+        .action-group {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
         .icon-btn {
-            background: #f4f6fa; border: none; color: #5a5f6e; padding: 6px 8px;
-            border-radius: 8px; cursor: pointer; transition: all 0.2s ease;
-            display: inline-flex; align-items: center; justify-content: center;
+            background: #f4f6fa;
+            border: none;
+            color: #5a5f6e;
+            padding: 6px 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
-        .icon-btn svg { width: 16px; height: 16px; stroke-width: 2; }
-        .icon-btn.edit-btn:hover { background: #e0e8f5; color: #2a5298; }
-        .icon-btn.delete-btn:hover { background: #fadbd8; color: #c0392b; }
+        .icon-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 2;
+        }
+        .icon-btn.edit-btn:hover {
+            background: #e0e8f5;
+            color: #2a5298;
+        }
+        .icon-btn.delete-btn:hover {
+            background: #fadbd8;
+            color: #c0392b;
+        }
 
         .records-table {
-            width: 100%; border-collapse: collapse;
-            font-size: 0.78rem; text-align: left;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78rem;
+            text-align: left;
         }
         .records-table th {
-            background: #f4f6fa; padding: 10px 10px;
-            font-weight: 600; color: var(--text-secondary);
-            border-bottom: 2px solid var(--border); white-space: nowrap;
+            background: #f4f6fa;
+            padding: 10px 10px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
         }
         .records-table td {
-            padding: 10px 10px; border-bottom: 1px solid #eef0f4;
-            vertical-align: middle; color: var(--text);
+            padding: 10px 10px;
+            border-bottom: 1px solid #eef0f4;
+            vertical-align: middle;
+            color: var(--text);
         }
         .records-table td:first-child {
-            white-space: nowrap; 
+            white-space: nowrap;
             min-width: 90px;
         }
-        .records-table tr:hover td { background: #fafbfc; }
-        .records-table tr:last-child td { border-bottom: none; }
-        .badge-table {
-            display: inline-block; font-size: 0.65rem; padding: 3px 8px;
-            border-radius: 6px; background: #e6f4ea; color: #1e7b4a;
-            font-weight: 600; margin-right: 4px; margin-bottom: 2px;
+        .records-table tr:hover td {
+            background: #fafbfc;
         }
-        .badge-komorbid-table { background: #fff0e0; color: #b87a14; }
-        .badge-alahan-ya { background: #fce8e6; color: #c0392b; }
-        .badge-alahan-tidak { background: #e6f4ea; color: #1e7b4a; }
+        .records-table tr:last-child td {
+            border-bottom: none;
+        }
+        .badge-table {
+            display: inline-block;
+            font-size: 0.65rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: #e6f4ea;
+            color: #1e7b4a;
+            font-weight: 600;
+            margin-right: 4px;
+            margin-bottom: 2px;
+        }
+        .badge-komorbid-table {
+            background: #fff0e0;
+            color: #b87a14;
+        }
+        .badge-alahan-ya {
+            background: #fce8e6;
+            color: #c0392b;
+        }
+        .badge-alahan-tidak {
+            background: #e6f4ea;
+            color: #1e7b4a;
+        }
 
-        .pagination { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid #eef0f4; font-size: 0.75rem; font-weight: 500; }
-        .pagination button { background: none; border: 2px solid var(--border); border-radius: 8px; padding: 6px 14px; font-family: 'Poppins', sans-serif; font-size: 0.7rem; font-weight: 600; color: var(--text); cursor: pointer; transition: all 0.2s ease;}
-        .pagination button:disabled { opacity: 0.4; cursor: default; }
-        .page-info { color: var(--text-secondary); }
-        .empty-state { text-align: center; padding: 28px; color: var(--text-secondary); }
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px solid #eef0f4;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .pagination button {
+            background: none;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .pagination button:disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+        .page-info {
+            color: var(--text-secondary);
+        }
+        .empty-state {
+            text-align: center;
+            padding: 28px;
+            color: var(--text-secondary);
+        }
 
         .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5); z-index: 2000;
-            display: flex; align-items: center; justify-content: center;
-            backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-            opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
         }
-        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
         .modal-card {
-            background: #fff; border-radius: 20px; width: calc(100% - 40px);
-            max-width: 360px; padding: 24px 20px; box-shadow: var(--shadow-lg);
-            display: flex; flex-direction: column; gap: 16px;
+            background: #fff;
+            border-radius: 20px;
+            width: calc(100% - 40px);
+            max-width: 360px;
+            padding: 24px 20px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
-        .modal-title { font-weight: 700; font-size: 1.1rem; color: var(--text); }
-        .modal-message { font-size: 0.9rem; color: var(--text-secondary); }
-        .modal-input-group { display: flex; flex-direction: column; gap: 6px; }
-        .modal-input-group label { font-size: 0.72rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; }
+        .modal-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        .modal-message {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .modal-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .modal-input-group label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
         .modal-input-group input {
-            font-family: 'Poppins', sans-serif; padding: 10px 12px; border: 2px solid var(--border);
-            border-radius: 10px; font-size: 0.85rem; background: #fafbfc;
+            font-family: 'Poppins', sans-serif;
+            padding: 10px 12px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.85rem;
+            background: #fafbfc;
         }
-        .modal-input-group input:focus { border-color: #2a5298; outline: none; }
-        .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
+        .modal-input-group input:focus {
+            border-color: #2a5298;
+            outline: none;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 4px;
+        }
         .modal-actions button {
-            font-family: 'Poppins', sans-serif; font-weight: 600; padding: 10px 20px;
-            border-radius: 10px; border: none; cursor: pointer; font-size: 0.85rem; transition: all 0.2s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
         }
-        .ok-btn { background: #1a3c6e; color: #fff; }
-        .cancel-btn { background: #eef1f6; color: #1a1a2e; }
-        .danger-btn { background: #c0392b; color: #fff; }
+        .ok-btn {
+            background: #1a3c6e;
+            color: #fff;
+        }
+        .cancel-btn {
+            background: #eef1f6;
+            color: #1a1a2e;
+        }
+        .danger-btn {
+            background: #c0392b;
+            color: #fff;
+        }
 
         .login-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--bg); z-index: 9999;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
-        .login-overlay.active { opacity: 1; pointer-events: auto; }
+        .login-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
         .login-card {
-            background: #fff; padding: 32px 24px; border-radius: 24px;
-            width: calc(100% - 40px); max-width: 380px;
-            box-shadow: var(--shadow-lg); text-align: center;
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 24px;
+            width: calc(100% - 40px);
+            max-width: 380px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
         }
-        .login-card img { height: 64px; margin-bottom: 12px; }
-        .login-card h2 { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
-        .login-card p { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 24px; }
-        .login-form .modal-input-group { text-align: left; margin-bottom: 12px; }
-        .login-form button[type="submit"] { width: 100%; margin-top: 16px; padding: 14px; font-size: 0.9rem; border-radius: 12px; }
+        .login-card img {
+            height: 64px;
+            margin-bottom: 12px;
+        }
+        .login-card h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .login-card p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .login-form .modal-input-group {
+            text-align: left;
+            margin-bottom: 12px;
+        }
+        .login-form button[type="submit"] {
+            width: 100%;
+            margin-top: 16px;
+            padding: 14px;
+            font-size: 0.9rem;
+            border-radius: 12px;
+        }
 
         /* Gaya untuk wrapper kata laluan dan butang bersebelahan */
         .password-wrapper {
@@ -347,15 +884,16 @@
             background: #fafbfc;
             transition: all 0.2s ease;
         }
-        .password-wrapper input:focus { 
-            border-color: #2a5298; 
-            outline: none; 
+        .password-wrapper input:focus {
+            border-color: #2a5298;
+            outline: none;
             background: #fff;
-            box-shadow: 0 0 0 4px rgba(42,82,152,0.06);
+            box-shadow: 0 0 0 4px rgba(42, 82, 152, 0.06);
         }
-        
+
         .btn-biometric-side {
-            display: none; /* Disembunyikan secara lalai. JS akan menukarnya ke 'flex' jika disokong */
+            display: none;
+            /* Disembunyikan secara lalai. JS akan menukarnya ke 'flex' jika disokong */
             align-items: center;
             justify-content: center;
             background: #ffffff;
@@ -379,8 +917,8 @@
             cursor: not-allowed;
         }
         .btn-biometric-side svg {
-            width: 26px; 
-            height: 26px; 
+            width: 26px;
+            height: 26px;
             stroke-width: 1.5;
         }
 
@@ -398,1176 +936,1468 @@
             transition: transform 0.35s ease, opacity 0.35s ease;
             pointer-events: none;
             white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             opacity: 0;
         }
         .toast.show {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-        .toast.success { background: #1e7b4a; }
-        .toast.warning { background: #e67e22; }
+        .toast.success {
+            background: #1e7b4a;
+        }
+        .toast.warning {
+            background: #e67e22;
+        }
 
         .bottom-bar {
-            position: fixed; bottom: 0; left: 0; right: 0; height: var(--bottom-bar-height);
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); display: flex; align-items: center;
-            justify-content: space-around; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            border-top: 1px solid #eaecef; z-index: 1000; padding: 0 8px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: var(--bottom-bar-height);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            border-top: 1px solid #eaecef;
+            z-index: 1000;
+            padding: 0 8px;
             transition: all 0.3s ease;
         }
         .bottom-bar .bar-btn {
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
-            background: none; border: none; color: #5a5f6e; font-family: 'Poppins', sans-serif;
-            font-size: 0.62rem; font-weight: 500; padding: 8px 6px; border-radius: 12px;
-            cursor: pointer; transition: all 0.15s ease; flex: 1; text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            background: none;
+            border: none;
+            color: #5a5f6e;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 500;
+            padding: 8px 6px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            flex: 1;
+            text-transform: uppercase;
         }
-        .bottom-bar .bar-btn:active { background: #f4f6fa; color: #1a3c6e; }
-        .bottom-bar .bar-btn svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+        .bottom-bar .bar-btn:active {
+            background: #f4f6fa;
+            color: #1a3c6e;
+        }
+        .bottom-bar .bar-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+        }
 
         .sync-badge {
-            position: absolute; top: 2px; right: calc(50% - 18px);
-            background-color: #10b981; color: white;
-            width: 16px; height: 16px; border-radius: 50%;
-            font-size: 10px; font-weight: 800; display: flex;
-            align-items: center; justify-content: center;
-            opacity: 0; transform: scale(0);
+            position: absolute;
+            top: 2px;
+            right: calc(50% - 18px);
+            background-color: #10b981;
+            color: white;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 2; border: 2px solid white; pointer-events: none;
+            z-index: 2;
+            border: 2px solid white;
+            pointer-events: none;
         }
-        .sync-badge.show { opacity: 1; transform: scale(1); }
+        .sync-badge.show {
+            opacity: 1;
+            transform: scale(1);
+        }
 
         .daily-badge {
-            position: absolute; top: 0px; right: calc(50% - 22px);
-            background-color: #95a5a6; color: white;
-            min-width: 18px; height: 18px; padding: 0 5px;
-            border-radius: 12px; font-size: 10px; font-weight: 700;
-            display: flex; align-items: center; justify-content: center;
-            z-index: 2; border: 2px solid white; pointer-events: none;
+            position: absolute;
+            top: 0px;
+            right: calc(50% - 22px);
+            background-color: #95a5a6;
+            color: white;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            border: 2px solid white;
+            pointer-events: none;
             transition: all 0.2s ease;
         }
-        .daily-badge.has-records { background-color: #c0392b; }
+        .daily-badge.has-records {
+            background-color: #c0392b;
+        }
+
+        /* --- BUTANG PEN (EDIT) PADA KAD VAKSIN DITERIMA --- */
+        .edit-pen-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            z-index: 5;
+            background: rgba(255, 255, 255, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #fff;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 0;
+            outline: none;
+        }
+        .edit-pen-btn:hover {
+            background: rgba(255, 255, 255, 0.40);
+            transform: scale(1.05);
+        }
+        .edit-pen-btn:active {
+            transform: scale(0.90);
+        }
+        .edit-pen-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 2.2;
+            stroke: currentColor;
+            fill: none;
+        }
 
         @media screen and (min-width: 768px) {
-            .top-banner { padding-left: 24px; padding-right: 24px; }
+            .top-banner {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
             .main-content {
-                max-width: 1440px; 
-                padding-top: 24px; padding-bottom: 24px; 
+                max-width: 1440px;
+                padding-top: 24px;
+                padding-bottom: 24px;
                 display: grid;
-                grid-template-columns: 330px 1fr; 
-                gap: 20px 20px; 
+                grid-template-columns: 330px 1fr;
+                gap: 20px 20px;
                 align-items: start;
             }
             .info-bar {
-                grid-column: 1 / -1; flex-direction: row; justify-content: flex-start;
-                gap: 40px; padding: 16px 24px; margin-top: 0;
+                grid-column: 1 / -1;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 40px;
+                padding: 16px 24px;
+                margin-top: 0;
             }
-            .dashboard-section { grid-column: 1 / -1; }
-            .dashboard-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
-            .daftar-rekod-btn { display: none; }
+            .dashboard-section {
+                grid-column: 1 / -1;
+            }
+            .dashboard-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+            .daftar-rekod-btn {
+                display: none;
+            }
 
             .form-section {
-                grid-column: 1; max-height: none !important; padding: 24px !important;
-                border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-                opacity: 1 !important; margin-top: 0;
+                grid-column: 1;
+                max-height: none !important;
+                padding: 24px !important;
+                border: 1px solid var(--border);
+                box-shadow: var(--shadow-sm);
+                opacity: 1 !important;
+                margin-top: 0;
             }
 
-            .records-section { 
-                grid-column: 2; margin-top: 0; height: 100%; 
-                padding: 20px 14px; 
+            .records-section {
+                grid-column: 2;
+                margin-top: 0;
+                height: 100%;
+                padding: 20px 14px;
             }
-            .mobile-records { display: none; }
-            .desktop-records { display: block; overflow-x: auto; }
+            .mobile-records {
+                display: none;
+            }
+            .desktop-records {
+                display: block;
+                overflow-x: auto;
+            }
 
-            .modal-card { max-width: 420px; }
+            .modal-card {
+                max-width: 420px;
+            }
 
             .bottom-bar {
-                background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none;
-                border: none; box-shadow: none; left: auto; right: 32px; bottom: 32px;
-                transform: none; flex-direction: column; align-items: flex-end;  
-                height: auto; width: auto; padding: 0; gap: 16px; 
+                background: transparent;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                border: none;
+                box-shadow: none;
+                left: auto;
+                right: 32px;
+                bottom: 32px;
+                transform: none;
+                flex-direction: column;
+                align-items: flex-end;
+                height: auto;
+                width: auto;
+                padding: 0;
+                gap: 16px;
             }
             .bottom-bar .bar-btn {
-                background: #ffffff; width: 56px; height: 56px; padding: 0; 
-                border-radius: 50%; box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-                border: 1px solid var(--border); color: var(--primary);
-                transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1); flex: none; 
+                background: #ffffff;
+                width: 56px;
+                height: 56px;
+                padding: 0;
+                border-radius: 50%;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+                border: 1px solid var(--border);
+                color: var(--primary);
+                transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+                flex: none;
             }
-            .bottom-bar .bar-btn span { display: none; }
-            .bottom-bar .bar-btn svg { width: 24px; height: 24px; }
-            .daily-badge, .sync-badge { top: -2px; right: -2px; }
+            .bottom-bar .bar-btn span {
+                display: none;
+            }
+            .bottom-bar .bar-btn svg {
+                width: 24px;
+                height: 24px;
+            }
+            .daily-badge,
+            .sync-badge {
+                top: -2px;
+                right: -2px;
+            }
         }
 
         @media (hover: hover) and (min-width: 768px) {
-            .bottom-bar .bar-btn:hover { 
-                transform: translateY(-4px) scale(1.05); 
-                box-shadow: 0 8px 24px rgba(0,0,0,0.15); 
-                background: #f8fafc; border-color: var(--primary-light);
+            .bottom-bar .bar-btn:hover {
+                transform: translateY(-4px) scale(1.05);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                background: #f8fafc;
+                border-color: var(--primary-light);
             }
-            .kpi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-            .komorbid-item:hover { background: #e0e8f5; border-color: #c5cdd8; }
-            .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(26,60,110,0.2); }
-            .pagination button:not(:disabled):hover { background: #f4f6fa; border-color: #2a5298; color: #1a3c6e; }
+            .kpi-card:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-md);
+            }
+            .komorbid-item:hover {
+                background: #e0e8f5;
+                border-color: #c5cdd8;
+            }
+            .btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(26, 60, 110, 0.2);
+            }
+            .pagination button:not(:disabled):hover {
+                background: #f4f6fa;
+                border-color: #2a5298;
+                color: #1a3c6e;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="login-overlay active" id="loginOverlay">
-    <div class="login-card">
-        <img src="jata.png" alt="Jata Negara Malaysia">
-        <h2>Sistem VIMS</h2>
-        <p>Sila log masuk untuk akses pangkalan data.</p>
-        
-        <form id="loginForm" class="login-form">
-            <div class="modal-input-group">
-                <label for="loginEmail">Alamat E-mel</label>
-                <input type="email" id="loginEmail" required placeholder="admin@klinik.com">
+    <div class="login-overlay active" id="loginOverlay">
+        <div class="login-card">
+            <img src="jata.png" alt="Jata Negara Malaysia">
+            <h2>Sistem VIMS</h2>
+            <p>Sila log masuk untuk akses pangkalan data.</p>
+
+            <form id="loginForm" class="login-form">
+                <div class="modal-input-group">
+                    <label for="loginEmail">Alamat E-mel</label>
+                    <input type="email" id="loginEmail" required placeholder="admin@klinik.com">
+                </div>
+
+                <div class="modal-input-group">
+                    <label for="loginPassword">Kata Laluan</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="loginPassword" required placeholder="••••••••">
+
+                        <button type="button" class="btn-biometric-side" id="btnBiometricLogin" title="Log Masuk dengan Cap Jari">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M18.9 7a8 8 0 0 1 1.1 5v1a6 6 0 0 0 .8 3"></path>
+                                <path d="M8 11a4 4 0 0 1 8 0v1a10 10 0 0 0 2 6"></path>
+                                <path d="M12 11v2a14 14 0 0 0 2.5 8"></path>
+                                <path d="M8 15a18 18 0 0 0 1.8 6"></path>
+                                <path d="M4.9 19a22 22 0 0 1 -.9 -7v-1a8 8 0 0 1 12 -6.95"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="btnLoginSubmit">Log Masuk</button>
+            </form>
+        </div>
+    </div>
+
+    <header class="top-banner" id="topBanner">
+        <img class="jata-img" src="jata.png" alt="Jata Negara Malaysia" loading="eager">
+        <div class="title-group">
+            <h1 class="main-title">VIMS for Influenza</h1>
+            <p class="sub-title">Vaccine Inventory Management System</p>
+            <p class="clinic-name">Klinik Kesihatan Bandar Kulim</p>
+        </div>
+        <button class="logout-btn" id="btnLogout">Log Keluar</button>
+    </header>
+
+    <main class="main-content" id="mainContent">
+
+        <div class="info-bar">
+            <div class="info-row">
+                <span class="label">Kod Fasiliti:</span>
+                <span class="value">21-02060057</span>
             </div>
-            
-            <div class="modal-input-group">
-                <label for="loginPassword">Kata Laluan</label>
-                <div class="password-wrapper">
-                    <input type="password" id="loginPassword" required placeholder="••••••••">
-                    
-                    <button type="button" class="btn-biometric-side" id="btnBiometricLogin" title="Log Masuk dengan Cap Jari">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M18.9 7a8 8 0 0 1 1.1 5v1a6 6 0 0 0 .8 3"></path>
-                            <path d="M8 11a4 4 0 0 1 8 0v1a10 10 0 0 0 2 6"></path>
-                            <path d="M12 11v2a14 14 0 0 0 2.5 8"></path>
-                            <path d="M8 15a18 18 0 0 0 1.8 6"></path>
-                            <path d="M4.9 19a22 22 0 0 1 -.9 -7v-1a8 8 0 0 1 12 -6.95"></path>
+            <div class="info-row">
+                <span class="label">Jenis Vaksin:</span>
+                <span class="value" id="displayJenisVaksin">-</span>
+            </div>
+            <div class="info-row">
+                <span class="label">No Batch:</span>
+                <span class="value" id="displayNoBatch">-</span>
+            </div>
+        </div>
+
+        <section class="dashboard-section" id="dashboardSection">
+            <div class="dashboard-grid">
+                <div class="kpi-card card-diterima editable" id="cardDiterima">
+                    <!-- BUTANG PEN EDIT DI UJUNG KANAN ATAS -->
+                    <button class="edit-pen-btn" id="editPenDiterima" title="Edit Jumlah Vaksin Diterima">
+                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                         </svg>
                     </button>
+                    <span class="card-label">Vaksin Diterima</span>
+                    <span class="card-value" id="valDiterima">0</span>
+                    <span class="card-sub">Jumlah stok diterima</span>
+                </div>
+                <div class="kpi-card card-diguna">
+                    <span class="card-label">Vaksin Diguna</span>
+                    <span class="card-value" id="valDiguna">0</span>
+                    <span class="card-sub">Jumlah diberi</span>
+                </div>
+                <div class="kpi-card card-simpanan">
+                    <span class="card-label">Simpanan</span>
+                    <div class="storage-row clickable" id="rowTopLoading" title="Ketik untuk pindah ke Bilik Rawatan">
+                        <span class="storage-label">Top loading</span>
+                        <span class="storage-value" id="valTopLoading">0</span>
+                    </div>
+                    <div class="storage-row">
+                        <span class="storage-label">Bilik rawatan</span>
+                        <span class="storage-value" id="valBilikRawatan">0</span>
+                    </div>
+                </div>
+                <div class="kpi-card card-baki">
+                    <span class="card-label">Baki Vaksin</span>
+                    <span class="card-value" id="valBaki">0</span>
+                    <span class="card-sub">Stok semasa</span>
                 </div>
             </div>
-            
-            <button type="submit" class="btn btn-primary" id="btnLoginSubmit">Log Masuk</button>
-        </form>
-    </div>
-</div>
+        </section>
 
-<header class="top-banner" id="topBanner">
-    <img class="jata-img" src="jata.png" alt="Jata Negara Malaysia" loading="eager">
-    <div class="title-group">
-        <h1 class="main-title">VIMS for Influenza</h1>
-        <p class="sub-title">Vaccine Inventory Management System</p>
-        <p class="clinic-name">Klinik Kesihatan Bandar Kulim</p>
-    </div>
-    <button class="logout-btn" id="btnLogout">Log Keluar</button>
-</header>
+        <button class="daftar-rekod-btn" id="btnDaftarRekod">+ Daftar Rekod</button>
 
-<main class="main-content" id="mainContent">
-
-    <div class="info-bar">
-        <div class="info-row">
-            <span class="label">Kod Fasiliti:</span>
-            <span class="value">21-02060057</span>
-        </div>
-        <div class="info-row">
-            <span class="label">Jenis Vaksin:</span>
-            <span class="value" id="displayJenisVaksin">-</span>
-        </div>
-        <div class="info-row">
-            <span class="label">No Batch:</span>
-            <span class="value" id="displayNoBatch">-</span>
-        </div>
-    </div>
-
-    <section class="dashboard-section" id="dashboardSection">
-        <div class="dashboard-grid">
-            <div class="kpi-card card-diterima editable" id="cardDiterima">
-                <span class="card-label">Vaksin Diterima</span>
-                <span class="card-value" id="valDiterima">0</span>
-                <span class="card-sub">Jumlah stok diterima</span>
-            </div>
-            <div class="kpi-card card-diguna">
-                <span class="card-label">Vaksin Diguna</span>
-                <span class="card-value" id="valDiguna">0</span>
-                <span class="card-sub">Jumlah diberi</span>
-            </div>
-            <div class="kpi-card card-simpanan">
-                <span class="card-label">Simpanan</span>
-                <div class="storage-row clickable" id="rowTopLoading" title="Ketik untuk pindah ke Bilik Rawatan">
-                    <span class="storage-label">Top loading</span>
-                    <span class="storage-value" id="valTopLoading">0</span>
+        <section class="form-section" id="formSection">
+            <div class="form-header">Daftar Rekod Baru</div>
+            <form id="vaccineForm" autocomplete="off">
+                <div class="form-group">
+                    <label class="form-label" for="recordDate">Tarikh Vaksinasi</label>
+                    <input type="date" class="form-input" id="recordDate" required>
                 </div>
-                <div class="storage-row">
-                    <span class="storage-label">Bilik rawatan</span>
-                    <span class="storage-value" id="valBilikRawatan">0</span>
+                <div class="form-group">
+                    <label class="form-label" for="patientName">Nama Pesakit</label>
+                    <input type="text" class="form-input" id="patientName" placeholder="Contoh: Ahmad bin Ismail" required>
                 </div>
-            </div>
-            <div class="kpi-card card-baki">
-                <span class="card-label">Baki Vaksin</span>
-                <span class="card-value" id="valBaki">0</span>
-                <span class="card-sub">Stok semasa</span>
-            </div>
-        </div>
-    </section>
-
-    <button class="daftar-rekod-btn" id="btnDaftarRekod">+ Daftar Rekod</button>
-
-    <section class="form-section" id="formSection">
-        <div class="form-header">Daftar Rekod Baru</div>
-        <form id="vaccineForm" autocomplete="off">
-            <div class="form-group">
-                <label class="form-label" for="recordDate">Tarikh Vaksinasi</label>
-                <input type="date" class="form-input" id="recordDate" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="patientName">Nama Pesakit</label>
-                <input type="text" class="form-input" id="patientName" placeholder="Contoh: Ahmad bin Ismail" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="icNumber">Kad Pengenalan Penuh</label>
-                <input type="text" inputmode="numeric" class="form-input" id="icNumber" placeholder="901215-08-1234" required maxlength="14">            </div>
-            <div class="form-group">
-                <label class="form-label" for="patientAge">Umur</label>
-                <input type="text" class="form-input" id="patientAge" readonly placeholder="Auto dikira dari IC" value="-">
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="phoneNumber">No. Telefon</label>
-                <input type="tel" class="form-input" id="phoneNumber" placeholder="Contoh: 0123456789" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="visitType">Jenis Lawatan (Visit Type)</label>
-                <select class="form-input" id="visitType">
-                    <option value="Walk in">Walk in</option>
-                    <option value="Appointment">Appointment</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="allergicStatus">Status Alahan (Allergic)</label>
-                <select class="form-input" id="allergicStatus">
-                    <option value="Tidak" selected>Tidak</option>
-                    <option value="Ya">Ya</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Komorbid</label>
-                <div class="komorbid-grid" id="komorbidGrid">
-                    <label class="komorbid-item" data-value="Diabetes"><span class="komorbid-dot"></span> Diabetes<input type="checkbox" value="Diabetes"></label>
-                    <label class="komorbid-item" data-value="Hipertensi"><span class="komorbid-dot"></span> Hipertensi<input type="checkbox" value="Hipertensi"></label>
-                    <label class="komorbid-item" data-value="Dyslipidemia"><span class="komorbid-dot"></span> Dyslipidemia<input type="checkbox" value="Dyslipidemia"></label>
-                    <label class="komorbid-item" data-value="Respiratory"><span class="komorbid-dot"></span> Respiratory<input type="checkbox" value="Respiratory"></label>
-                    <label class="komorbid-item" data-value="Chronic Kidney Disease"><span class="komorbid-dot"></span> CKD<input type="checkbox" value="Chronic Kidney Disease"></label>
-                    <label class="komorbid-item" data-value="Cardiovascular Disease"><span class="komorbid-dot"></span> CVD<input type="checkbox" value="Cardiovascular Disease"></label>
-                    <label class="komorbid-item" data-value="Obesiti"><span class="komorbid-dot"></span> Obesiti<input type="checkbox" value="Obesiti"></label>
+                <div class="form-group">
+                    <label class="form-label" for="icNumber">Kad Pengenalan Penuh</label>
+                    <input type="text" inputmode="numeric" class="form-input" id="icNumber" placeholder="901215-08-1234" required maxlength="14">
                 </div>
+                <div class="form-group">
+                    <label class="form-label" for="patientAge">Umur</label>
+                    <input type="text" class="form-input" id="patientAge" readonly placeholder="Auto dikira dari IC" value="-">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="phoneNumber">No. Telefon</label>
+                    <input type="tel" class="form-input" id="phoneNumber" placeholder="Contoh: 0123456789" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="visitType">Jenis Lawatan (Visit Type)</label>
+                    <select class="form-input" id="visitType">
+                        <option value="Walk in">Walk in</option>
+                        <option value="Appointment">Appointment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="allergicStatus">Status Alahan (Allergic)</label>
+                    <select class="form-input" id="allergicStatus">
+                        <option value="Tidak" selected>Tidak</option>
+                        <option value="Ya">Ya</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Komorbid</label>
+                    <div class="komorbid-grid" id="komorbidGrid">
+                        <label class="komorbid-item" data-value="Diabetes"><span class="komorbid-dot"></span> Diabetes<input type="checkbox" value="Diabetes"></label>
+                        <label class="komorbid-item" data-value="Hipertensi"><span class="komorbid-dot"></span> Hipertensi<input type="checkbox" value="Hipertensi"></label>
+                        <label class="komorbid-item" data-value="Dyslipidemia"><span class="komorbid-dot"></span> Dyslipidemia<input type="checkbox" value="Dyslipidemia"></label>
+                        <label class="komorbid-item" data-value="Respiratory"><span class="komorbid-dot"></span> Respiratory<input type="checkbox" value="Respiratory"></label>
+                        <label class="komorbid-item" data-value="Chronic Kidney Disease"><span class="komorbid-dot"></span> CKD<input type="checkbox" value="Chronic Kidney Disease"></label>
+                        <label class="komorbid-item" data-value="Cardiovascular Disease"><span class="komorbid-dot"></span> CVD<input type="checkbox" value="Cardiovascular Disease"></label>
+                        <label class="komorbid-item" data-value="Obesiti"><span class="komorbid-dot"></span> Obesiti<input type="checkbox" value="Obesiti"></label>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Simpan Rekod</button>
+                    <button type="button" class="btn btn-outline" id="clearBtn">Set Semula</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="records-section" id="recordsSection">
+            <div class="records-header">
+                <span class="records-title">Rekod Vaksinasi</span>
+                <span class="records-count" id="recordCount">0</span>
             </div>
-            <div class="form-buttons">
-                <button type="submit" class="btn btn-primary" id="submitBtn">Simpan Rekod</button>
-                <button type="button" class="btn btn-outline" id="clearBtn">Set Semula</button>
+
+            <div id="recordsList">
+                <div class="empty-state"><p class="empty-text">Tiada rekod.</p></div>
             </div>
-        </form>
-    </section>
 
-    <section class="records-section" id="recordsSection">
-        <div class="records-header">
-            <span class="records-title">Rekod Vaksinasi</span>
-            <span class="records-count" id="recordCount">0</span>
-        </div>
-        
-        <div id="recordsList">
-            <div class="empty-state"><p class="empty-text">Tiada rekod.</p></div>
-        </div>
+            <div class="pagination" id="pagination" style="display:none;">
+                <button id="prevPage" disabled>‹ Sebelum</button>
+                <span class="page-info" id="pageInfo">Halaman 1</span>
+                <button id="nextPage" disabled>Selepas ›</button>
+            </div>
+        </section>
 
-        <div class="pagination" id="pagination" style="display:none;">
-            <button id="prevPage" disabled>‹ Sebelum</button>
-            <span class="page-info" id="pageInfo">Halaman 1</span>
-            <button id="nextPage" disabled>Selepas ›</button>
-        </div>
-    </section>
+    </main>
 
-</main>
-
-<div class="modal-overlay" id="modalDaftarVaksin">
-    <div class="modal-card">
-        <div class="modal-title">Daftar Vaksin Baru</div>
-        <div class="modal-input-group">
-            <label for="modalJenisVaksin">Jenis Vaksin</label>
-            <input type="text" id="modalJenisVaksin" placeholder="contoh: Vaksin Influenza Trivalen">
-        </div>
-        <div class="modal-input-group">
-            <label for="modalNoBatch">No Batch Vaksin</label>
-            <input type="text" id="modalNoBatch" placeholder="contoh: AB1234V">
-        </div>
-        <div class="modal-input-group">
-            <label for="modalJumlahTerima">Jumlah Terima</label>
-            <input type="number" id="modalJumlahTerima" placeholder="0" min="0">
-        </div>
-        <div class="modal-input-group">
-            <label for="modalTopLoading">Top Loading</label>
-            <input type="number" id="modalTopLoading" readonly value="0">
-        </div>
-        <div class="modal-input-group">
-            <label for="modalPengeluaran">Pengeluaran (Bilik Rawatan)</label>
-            <input type="number" id="modalPengeluaran" placeholder="0" min="0" value="0">
-        </div>
-        <div class="modal-actions">
-            <button class="cancel-btn" id="modalBatalVaksin">Batal</button>
-            <button class="ok-btn" id="modalOkVaksin">OK</button>
+    <!-- MODAL DAFTAR VAKSIN (STOK) -->
+    <div class="modal-overlay" id="modalDaftarVaksin">
+        <div class="modal-card">
+            <div class="modal-title">Daftar Vaksin Baru</div>
+            <div class="modal-input-group">
+                <label for="modalJenisVaksin">Jenis Vaksin</label>
+                <input type="text" id="modalJenisVaksin" placeholder="contoh: Vaksin Influenza Trivalen">
+            </div>
+            <div class="modal-input-group">
+                <label for="modalNoBatch">No Batch Vaksin</label>
+                <input type="text" id="modalNoBatch" placeholder="contoh: AB1234V">
+            </div>
+            <div class="modal-input-group">
+                <label for="modalJumlahTerima">Jumlah Terima</label>
+                <input type="number" id="modalJumlahTerima" placeholder="0" min="0">
+            </div>
+            <div class="modal-input-group">
+                <label for="modalTopLoading">Top Loading</label>
+                <input type="number" id="modalTopLoading" readonly value="0">
+            </div>
+            <div class="modal-input-group">
+                <label for="modalPengeluaran">Pengeluaran (Bilik Rawatan)</label>
+                <input type="number" id="modalPengeluaran" placeholder="0" min="0" value="0">
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="modalBatalVaksin">Batal</button>
+                <button class="ok-btn" id="modalOkVaksin">OK</button>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="modal-overlay" id="modalResetKaunter">
-    <div class="modal-card">
-        <div class="modal-title">Reset Kaunter</div>
-        <div class="modal-message">Kaunter akan dikosongkan. Adakah anda pasti?</div>
-        <div class="modal-actions" style="justify-content: space-between;">
-            <button class="cancel-btn" id="modalBatalReset">Tidak</button>
-            <button class="danger-btn" id="modalYaReset">Ya, Reset</button>
-        </div>
-    </div>
-</div>
+    <nav class="bottom-bar">
+        <button class="bar-btn" id="bottomDaftarVaksin" style="position: relative;" title="Daftar Vaksin Baru">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <span>Daftar Vaksin</span>
+        </button>
+        <button class="bar-btn" id="bottomJumlahHarian" style="position: relative;" title="Jumlah Harian">
+            <div class="daily-badge" id="dailyBadge">0</div>
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Jumlah Harian</span>
+        </button>
+        <button class="bar-btn" id="bottomGoogleSheets" style="position: relative;" title="Sync ke Google Sheets">
+            <div class="sync-badge" id="syncBadge">✓</div>
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <line x1="8" y1="3" x2="8" y2="21"/>
+                <line x1="15" y1="3" x2="15" y2="21"/>
+                <line x1="3" y1="8" x2="21" y2="8"/>
+                <line x1="3" y1="15" x2="21" y2="15"/>
+            </svg>
+            <span>Google Sheets</span>
+        </button>
+    </nav>
 
-<nav class="bottom-bar">
-    <button class="bar-btn" id="bottomDaftarVaksin" style="position: relative;" title="Daftar Vaksin Baru">
-        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-        <span>Daftar Vaksin</span>
-    </button>
-    <button class="bar-btn" id="bottomJumlahHarian" style="position: relative;" title="Jumlah Harian">
-        <div class="daily-badge" id="dailyBadge">0</div>
-        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span>Jumlah Harian</span>
-    </button>
-    <button class="bar-btn" id="bottomGoogleSheets" style="position: relative;" title="Sync ke Google Sheets">
-        <div class="sync-badge" id="syncBadge">✓</div>
-        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-            <line x1="8" y1="3" x2="8" y2="21"/>
-            <line x1="15" y1="3" x2="15" y2="21"/>
-            <line x1="3" y1="8" x2="21" y2="8"/>
-            <line x1="3" y1="15" x2="21" y2="15"/>
-        </svg>
-        <span>Google Sheets</span>
-    </button>
-</nav>
+    <div class="toast" id="toast"></div>
 
-<div class="toast" id="toast"></div>
-
-<script>
-    (function() {
-        // =============== KONFIGURASI FIREBASE =================
-        const firebaseConfig = {
-            apiKey: "AIzaSyAhJScEdO4r3OM7Ix916WcBamg-aKeyZ60",
-            authDomain: "vims-for-influenza.firebaseapp.com",
-            projectId: "vims-for-influenza",
-            storageBucket: "vims-for-influenza.firebasestorage.app",
-            messagingSenderId: "708024534113",
-            appId: "1:708024534113:web:06c0b992a259409aba1620",
-            measurementId: "G-SQ7F4J1ZDY"
-        };
-        
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const auth = firebase.auth();
-
-        db.enablePersistence().catch(function(err) {
-            if (err.code == 'failed-precondition') console.warn('Offline persistence aktif pd 1 tab shj.');
-            else if (err.code == 'unimplemented') console.warn('Browser tidak menyokong offline persistence.');
-        });
-
-        // DOM Elements
-        const vaccineForm = document.getElementById('vaccineForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const recordDateInput = document.getElementById('recordDate'); 
-        const recordsList = document.getElementById('recordsList');
-        const recordCountEl = document.getElementById('recordCount');
-        const toast = document.getElementById('toast');
-        const clearBtn = document.getElementById('clearBtn');
-        const formSection = document.getElementById('formSection');
-        const btnDaftarRekod = document.getElementById('btnDaftarRekod');
-        const icInput = document.getElementById('icNumber');
-        const ageInput = document.getElementById('patientAge');
-        const komorbidGrid = document.getElementById('komorbidGrid');
-        const paginationDiv = document.getElementById('pagination');
-        const prevBtn = document.getElementById('prevPage');
-        const nextBtn = document.getElementById('nextPage');
-        const pageInfo = document.getElementById('pageInfo');
-        const displayJenisVaksin = document.getElementById('displayJenisVaksin');
-        const displayNoBatch = document.getElementById('displayNoBatch'); 
-        const btnGoogleSheets = document.getElementById('bottomGoogleSheets');
-        const syncBadge = document.getElementById('syncBadge');
-        const dailyBadge = document.getElementById('dailyBadge');
-
-        const valDiterima = document.getElementById('valDiterima');
-        const valDiguna = document.getElementById('valDiguna');
-        const valTopLoading = document.getElementById('valTopLoading');
-        const valBilikRawatan = document.getElementById('valBilikRawatan');
-        const valBaki = document.getElementById('valBaki');
-        const rowTopLoading = document.getElementById('rowTopLoading');
-        const cardDiterima = document.getElementById('cardDiterima');
-        const topBanner = document.getElementById('topBanner');
-
-        const modalDaftarVaksin = document.getElementById('modalDaftarVaksin');
-        const modalJenis = document.getElementById('modalJenisVaksin');
-        const modalNoBatch = document.getElementById('modalNoBatch'); 
-        const modalJumlahTerima = document.getElementById('modalJumlahTerima');
-        const modalTopLoading = document.getElementById('modalTopLoading');
-        const modalPengeluaran = document.getElementById('modalPengeluaran');
-        const modalOkVaksin = document.getElementById('modalOkVaksin');
-        const modalBatalVaksin = document.getElementById('modalBatalVaksin');
-
-        const modalResetKaunter = document.getElementById('modalResetKaunter');
-        const modalBatalReset = document.getElementById('modalBatalReset');
-        const modalYaReset = document.getElementById('modalYaReset');
-
-        // Elemen Log Masuk
-        const loginOverlay = document.getElementById('loginOverlay');
-        const loginForm = document.getElementById('loginForm');
-        const loginEmail = document.getElementById('loginEmail');
-        const loginPassword = document.getElementById('loginPassword');
-        const btnLoginSubmit = document.getElementById('btnLoginSubmit');
-        const btnLogout = document.getElementById('btnLogout');
-        const btnBiometricLogin = document.getElementById('btnBiometricLogin');
-
-        // ============ KONFIGURASI BIOMETRIK (CAP JARI) ============
-        const SERVER_KEY = "vims.auth.secure";
-        let isBiometricAvailable = false;
-
-        // Semak sokongan biometrik apabila aplikasi dibuka
-        async function checkBiometricSupport() {
-            if (window.Capacitor && window.Capacitor.Plugins.NativeBiometric) {
-                const NativeBiometric = window.Capacitor.Plugins.NativeBiometric;
-                try {
-                    const result = await NativeBiometric.isAvailable();
-                    if (result.isAvailable) {
-                        isBiometricAvailable = true;
-                        btnBiometricLogin.style.display = 'flex'; // Paparkan butang bersebelahan
-                    }
-                } catch (e) {
-                    console.log("Biometrik tidak tersedia.", e);
-                }
-            }
-        }
-
-        // Fungsi log masuk guna cap jari
-        btnBiometricLogin.addEventListener('click', async () => {
-            if (!isBiometricAvailable) return;
-            const NativeBiometric = window.Capacitor.Plugins.NativeBiometric;
-
-            try {
-                // 1. Sahkan Identiti
-                await NativeBiometric.verifyIdentity({
-                    reason: "Sahkan identiti untuk log masuk VIMS",
-                    title: "Log Masuk Biometrik",
-                    subtitle: "Gunakan pengimbas cap jari",
-                    description: "Sila imbas jari anda"
-                });
-
-                // 2. Ambil Kredensial Tersimpan
-                const credentials = await NativeBiometric.getCredentials({
-                    server: SERVER_KEY
-                });
-
-                // 3. Maklum Balas UI & Log Masuk Firebase
-                btnLoginSubmit.disabled = true;
-                btnBiometricLogin.disabled = true;
-                btnBiometricLogin.style.opacity = '0.5'; // Kelabukan butang semasa memproses
-
-                await auth.signInWithEmailAndPassword(credentials.username, credentials.password);
-                showToast('Log masuk biometrik berjaya!', true);
-
-            } catch (error) {
-                console.error("Ralat Biometrik:", error);
-                if (error.code === 'UserCancel') return;
-                showToast('Cap jari gagal atau tiada rekod. Sila log masuk guna e-mel buat kali pertama.', false);
-            } finally {
-                // Pulihkan UI
-                btnLoginSubmit.disabled = false;
-                btnBiometricLogin.disabled = false;
-                btnBiometricLogin.style.opacity = '1';
-            }
-        });
-
-        // ============ URL GOOGLE SHEETS ============
-        const DEFAULT_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzSBTq0BdfymywWnJqFTUm0hft8V1WQADu-7zzBKdTerUtMltE1Vh94DGWlZ64QSZXc/exec';
-
-        // ============ PEMETAAN KOMORBID KE SINGKATAN ============
-        const komorbidMap = {
-            'Diabetes': 'DM',
-            'Hipertensi': 'HPT',
-            'Dyslipidemia': 'Dys',
-            'Respiratory': 'RD',
-            'Obesiti': 'Obes',
-            'Cardiovascular Disease': 'CVD',
-            'Chronic Kidney Disease': 'CKD'
-        };
-
-        function mapKomorbid(value) {
-            return komorbidMap[value] || value;
-        }
-
-        let records = [];
-        let stockData = { totalDiterima: 0, topLoading: 0, bilikRawatan: 0, jenisVaksin: '', noBatch: '' };
-        
-        let currentPage = 1;
-        let isSending = false;
-        let editingRecordId = null;
-
-        let unsubRecords = null;
-        let unsubStock = null;
-        let isAppInitialized = false;
-
-        // --- SISTEM LOG MASUK & AUTHENTICATION ---
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                loginOverlay.classList.remove('active');
-                if (!isAppInitialized) {
-                    initApp();
-                } else {
-                    setupRealtimeListeners();
-                }
-            } else {
-                loginOverlay.classList.add('active');
-                checkBiometricSupport(); // Semak sokongan biometrik di skrin log masuk
-                if (unsubRecords) unsubRecords();
-                if (unsubStock) unsubStock();
-                records = [];
-                renderRecords();
-            }
-        });
-
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = loginEmail.value.trim();
-            const password = loginPassword.value.trim();
-            
-            btnLoginSubmit.disabled = true;
-            btnLoginSubmit.textContent = 'Menyemak...';
-            
-            try {
-                await auth.signInWithEmailAndPassword(email, password);
-
-                // SIMPAN KREDENSIAL UNTUK CAP JARI JIKA BERJAYA
-                if (isBiometricAvailable) {
-                    try {
-                        const NativeBiometric = window.Capacitor.Plugins.NativeBiometric;
-                        await NativeBiometric.setCredentials({
-                            username: email,
-                            password: password,
-                            server: SERVER_KEY
-                        });
-                    } catch (err) { console.log("Gagal simpan kredensial biometrik.", err); }
-                }
-
-                loginForm.reset();
-                showToast('Log masuk berjaya!', true);
-            } catch (error) {
-                console.error(error);
-                showToast('Log masuk gagal. Sila semak e-mel dan kata laluan.', false);
-            } finally {
-                btnLoginSubmit.disabled = false;
-                btnLoginSubmit.textContent = 'Log Masuk';
-            }
-        });
-
-        btnLogout.addEventListener('click', async () => {
-            if (confirm('Anda pasti mahu log keluar dari sistem?')) {
-                try {
-                    await auth.signOut();
-                } catch (e) { console.error(e); }
-            }
-        });
-
-        function getPageSize() { return window.innerWidth >= 768 ? 9 : 5; }
-
-        function setTodayDate() {
-            const today = new Date();
-            const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            if (recordDateInput) recordDateInput.value = `${yyyy}-${mm}-${dd}`;
-        }
-
-        // =========================================================
-        // FUNGSI YANG DIUBAH: Utamakan recordDate (Tarikh Vaksinasi)
-        // =========================================================
-        function sanitizeRecordDate(r) {
-            let displayDate = '-';
-            let displayTime = '';
-            let inputDate = '';
-
-            // 1. Utamakan recordDate (Tarikh Vaksinasi)
-            if (r.recordDate) {
-                const parts = r.recordDate.split('-');
-                if (parts.length === 3) {
-                    const y = parts[0];
-                    const m = parts[1];
-                    const d = parts[2];
-                    displayDate = `${d}/${m}/${y}`;
-                    inputDate = r.recordDate;
-                }
-            } else {
-                // Fallback: guna createdAt jika recordDate tiada (rekod lama)
-                let fallbackObj = new Date();
-                if (r.createdAt) {
-                    const cDate = new Date(r.createdAt);
-                    if (!isNaN(cDate)) fallbackObj = cDate;
-                }
-                const fbDD = String(fallbackObj.getDate()).padStart(2, '0');
-                const fbMM = String(fallbackObj.getMonth() + 1).padStart(2, '0');
-                const fbYYYY = fallbackObj.getFullYear();
-                displayDate = `${fbDD}/${fbMM}/${fbYYYY}`;
-                inputDate = `${fbYYYY}-${fbMM}-${fbDD}`;
-            }
-
-            // 2. Masa: dari r.timestamp (jika ada) atau fallback ke createdAt
-            const ts = r.timestamp || '';
-            const matchTime = ts.match(/\b(\d{1,2}):(\d{2})\s?(AM|PM|am|pm)\b/);
-            if (matchTime) {
-                displayTime = matchTime[0].toUpperCase();
-            } else {
-                let fallbackObj = new Date();
-                if (r.createdAt) {
-                    const cDate = new Date(r.createdAt);
-                    if (!isNaN(cDate)) fallbackObj = cDate;
-                }
-                let h = fallbackObj.getHours();
-                let ampm = h >= 12 ? 'PM' : 'AM';
-                h = h % 12 || 12;
-                const min = String(fallbackObj.getMinutes()).padStart(2, '0');
-                displayTime = `${h}:${min} ${ampm}`;
-            }
-
-            return { displayDate, displayTime, inputDate };
-        }
-
-        function formatCustomTimestamp(yyyy_mm_dd, originalDateObj = new Date()) {
-            if (!yyyy_mm_dd) {
-                const now = new Date();
-                yyyy_mm_dd = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-            }
-            const parts = yyyy_mm_dd.split('-'); 
-            if (parts.length !== 3) return "-";
-            
-            const yyyy = parts;
-            const mm = parts;
-            const dd = parts;
-            
-            let h = originalDateObj.getHours();
-            let ampm = h >= 12 ? 'PM' : 'AM';
-            h = h % 12 || 12;
-            const min = String(originalDateObj.getMinutes()).padStart(2, '0');
-            
-            return `${dd}/${mm}/${yyyy} | ${h}:${min} ${ampm}`;
-        }
-
-        function setupRealtimeListeners() {
-            unsubRecords = db.collection('vims_records').onSnapshot((snapshot) => {
-                records = [];
-                snapshot.forEach(doc => records.push(doc.data()));
-                renderRecords();
-                renderDashboard();
-            }, (error) => console.error("Ralat Realtime Rekod:", error));
-
-            unsubStock = db.collection('vims_settings').doc('stockData').onSnapshot((doc) => {
-                if (doc.exists) {
-                    stockData = doc.data();
-                    if (stockData.jenisVaksin === undefined) stockData.jenisVaksin = '';
-                    if (stockData.noBatch === undefined) stockData.noBatch = '';
-                } else stockData = { totalDiterima: 0, topLoading: 0, bilikRawatan: 0, jenisVaksin: '', noBatch: '' };
-                renderDashboard();
-                updateDisplayInfo();
-            }, (error) => console.error("Ralat Realtime Stok:", error));
-        }
-
-        async function initApp() {
-            setTodayDate();
-            setupRealtimeListeners();
-            updateBannerHeight();
-            window.addEventListener('resize', updateBannerHeight);
-            window.addEventListener('resize', () => { renderRecords(); }); 
-            icInput.addEventListener('input', handleICInput);
-            setupKomorbidListeners();
-            setupStockListeners();
-            setupButtons();
-            setupPagination();
-            setupModalVaksinListeners();
-            setupModalResetListeners();
-            isAppInitialized = true;
-        }
-
-        function updateBannerHeight() { if (topBanner) document.documentElement.style.setProperty('--banner-height', topBanner.offsetHeight + 'px'); }
-        async function saveStock() { await db.collection('vims_settings').doc('stockData').set(stockData); }
-
-        function renderDashboard() {
-            const diguna = records.length;
-            const total = stockData.totalDiterima || 0;
-            const top = stockData.topLoading || 0;
-            const bilik = stockData.bilikRawatan || 0;
-            valDiterima.textContent = total; valDiguna.textContent = diguna;
-            valTopLoading.textContent = top; valBilikRawatan.textContent = bilik;
-            valBaki.textContent = Math.max(0, total - diguna);
-        }
-
-        function updateDisplayInfo() { displayJenisVaksin.textContent = stockData.jenisVaksin || '-'; displayNoBatch.textContent = stockData.noBatch || '-'; }
-        
-        function updateDailyBadge() {
-            const today = new Date();
-            const dd = String(today.getDate()).padStart(2, '0');
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const yyyy = today.getFullYear();
-            const todayStr = `${dd}/${mm}/${yyyy}`;
-            
-            const count = records.filter(r => {
-                const safe = sanitizeRecordDate(r);
-                return safe.displayDate === todayStr;
-            }).length;
-            
-            dailyBadge.textContent = count;
-            if (count > 0) {
-                dailyBadge.classList.add('has-records'); 
-                dailyBadge.style.transform = 'scale(1.2)';
-                setTimeout(() => dailyBadge.style.transform = 'scale(1)', 200);
-            } else dailyBadge.classList.remove('has-records'); 
-        }
-
-        function handleICInput(e) {
-            let val = e.target.value.replace(/[^0-9]/g, '');
-            if (val.length > 12) val = val.slice(0, 12);
-            let formatted = '';
-            for (let i = 0; i < val.length; i++) {
-                if (i === 6 || i === 8) formatted += '-';
-                formatted += val[i];
-            }
-            e.target.value = formatted;
-            const raw = val.replace(/-/g, '');
-            if (raw.length >= 6) {
-                const yy = parseInt(raw.substring(0,2),10), mm = parseInt(raw.substring(2,4),10), dd = parseInt(raw.substring(4,6),10);
-                const now = new Date(); const currentYear = now.getFullYear();
-                let fullYear = yy > (currentYear % 100) ? 1900 + yy : 2000 + yy;
-                const birth = new Date(fullYear, mm-1, dd);
-                if (isNaN(birth)) { ageInput.value = '-'; return; }
-                let age = currentYear - fullYear;
-                if (now < new Date(currentYear, mm-1, dd)) age--;
-                ageInput.value = age >= 0 ? age : '-';
-            } else ageInput.value = '-';
-        }
-
-        function setupKomorbidListeners() {
-            komorbidGrid.querySelectorAll('.komorbid-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const cb = this.querySelector('input');
-                    cb.checked = !cb.checked;
-                    this.classList.toggle('selected', cb.checked);
-                });
-            });
-        }
-        function getSelectedKomorbid() { return Array.from(komorbidGrid.querySelectorAll('input:checked')).map(cb => cb.value); }
-        function resetKomorbid() { komorbidGrid.querySelectorAll('input').forEach(cb => { cb.checked = false; cb.closest('.komorbid-item').classList.remove('selected'); }); }
-
-        function setupStockListeners() {
-            rowTopLoading.addEventListener('click', async (e) => {
-                e.stopPropagation();
-                const available = stockData.topLoading || 0;
-                if (available <= 0) { showToast('Tiada stok di Top Loading.', false); return; }
-                let input = prompt(`Pindahkan berapa dos ke Bilik Rawatan? (Maks: ${available}):`, '');
-                if (input === null) return;
-                let amount = parseInt(input.replace(/[^0-9]/g, ''), 10);
-                if (isNaN(amount) || amount <= 0) { showToast('Nombor tidak sah.', false); return; }
-                if (amount > available) { showToast(`Maksimum ${available}.`, false); return; }
-
-                stockData.topLoading -= amount; stockData.bilikRawatan += amount;
-                try { await saveStock(); showToast(`${amount} dos dipindahkan ke Bilik Rawatan.`, true); } 
-                catch (error) { console.error("Ralat pindah stok:", error); showToast('Gagal pindahkan stok.', false); }
-            });
-        }
-
-        function setupModalVaksinListeners() {
-            function updateTopCalculation() {
-                const jumlah = parseInt(modalJumlahTerima.value) || 0;
-                const keluar = parseInt(modalPengeluaran.value) || 0;
-                modalTopLoading.value = Math.max(0, jumlah - keluar);
-            }
-            modalJumlahTerima.addEventListener('input', updateTopCalculation);
-            modalPengeluaran.addEventListener('input', () => {
-                let keluar = parseInt(modalPengeluaran.value) || 0;
-                const jumlah = parseInt(modalJumlahTerima.value) || 0;
-                if (keluar > jumlah) modalPengeluaran.value = jumlah;
-                updateTopCalculation();
-            });
-            modalBatalVaksin.addEventListener('click', closeModalVaksin);
-            modalDaftarVaksin.addEventListener('click', (e) => { if (e.target === modalDaftarVaksin) closeModalVaksin(); });
-
-            modalOkVaksin.addEventListener('click', async () => {
-                const jenis = modalJenis.value.trim(); const batch = modalNoBatch.value.trim();
-                const jumlahTerima = parseInt(modalJumlahTerima.value) || 0; const pengeluaran = parseInt(modalPengeluaran.value) || 0;
-                
-                if (!jenis) { showToast('Sila masukkan Jenis Vaksin.', false); return; }
-                if (!batch) { showToast('Sila masukkan No Batch Vaksin.', false); return; }
-                if (jumlahTerima <= 0) { showToast('Jumlah Terima mesti lebih dari 0.', false); return; }
-                if (pengeluaran > jumlahTerima) { showToast('Pengeluaran tidak boleh melebihi Jumlah Terima.', false); return; }
-
-                stockData.jenisVaksin = jenis; stockData.noBatch = batch;
-                stockData.totalDiterima += jumlahTerima; stockData.topLoading += (jumlahTerima - pengeluaran); stockData.bilikRawatan += pengeluaran;
-                
-                try {
-                    await saveStock(); closeModalVaksin(); showToast('Stok vaksin berjaya dikemas kini.', true);
-                } catch (error) {
-                    console.error("Ralat menyimpan stok:", error); showToast('Gagal! Sila pastikan Rules Firebase adalah "true".', false);
-                }
-            });
-        }
-
-        function openModalVaksin() {
-            modalJenis.value = stockData.jenisVaksin || ''; modalNoBatch.value = stockData.noBatch || ''; 
-            modalJumlahTerima.value = ''; modalPengeluaran.value = '0'; modalTopLoading.value = '0';
-            modalDaftarVaksin.classList.add('active'); setTimeout(() => modalJumlahTerima.focus(), 100);
-        }
-        function closeModalVaksin() { modalDaftarVaksin.classList.remove('active'); }
-
-        function setupModalResetListeners() {
-            cardDiterima.addEventListener('click', () => modalResetKaunter.classList.add('active'));
-            modalBatalReset.addEventListener('click', () => modalResetKaunter.classList.remove('active'));
-            modalResetKaunter.addEventListener('click', (e) => { if (e.target === modalResetKaunter) modalResetKaunter.classList.remove('active'); });
-
-            modalYaReset.addEventListener('click', async () => {
-                stockData = { totalDiterima: 0, topLoading: 0, bilikRawatan: 0, jenisVaksin: '', noBatch: '' };
-                try {
-                    await saveStock();
-                    const snapshot = await db.collection('vims_records').get();
-                    const batch = db.batch();
-                    snapshot.forEach(doc => batch.delete(doc.ref));
-                    await batch.commit();
-                    modalResetKaunter.classList.remove('active'); 
-                    showToast('Kaunter telah direset.', true);
-                    updateDailyBadge();
-                } catch(e) { console.error("Gagal reset kaunter:", e); showToast('Gagal reset kaunter.', false); }
-            });
-        }
-
-        function setupButtons() {
-            btnDaftarRekod.addEventListener('click', () => {
-                if (formSection.classList.contains('expanded')) {
-                    formSection.classList.remove('expanded');
-                    resetForm(false);
-                } else {
-                    formSection.classList.add('expanded');
-                    if (window.innerWidth < 768) formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    setTimeout(() => document.getElementById('recordDate').focus(), 400);
-                }
-            });
-            document.getElementById('bottomDaftarVaksin').addEventListener('click', openModalVaksin);
-            document.getElementById('bottomJumlahHarian').addEventListener('click', () => showToast(`Jumlah pesakit hari ini: ${dailyBadge.textContent}`, true));
-            document.getElementById('bottomGoogleSheets').addEventListener('click', () => {
-                showToast('Menyegerakkan semua data ke Sheets...', true); syncToCloud('SYNC_ALL');
-            });
-        }
-
-        async function syncToCloud(action, payload = null) {
-            if (isSending) return;
-            if (!navigator.onLine) { showToast('Tiada internet. Data disimpan di Firebase.', false); return; }
-
-            isSending = true; btnGoogleSheets.disabled = true; btnGoogleSheets.style.opacity = '0.5';
-            const sheetUrl = DEFAULT_SHEET_URL; 
-
-            let data = {
-                action: action, 
-                kodFasiliti: '21-02060057',
-                jenisVaksin: stockData.jenisVaksin || '-', 
-                noBatch: stockData.noBatch || '-',
-                diterima: stockData.totalDiterima || 0, 
-                topLoading: stockData.topLoading || 0, 
-                bilikRawatan: stockData.bilikRawatan || 0
+    <script>
+        (function() {
+            // =============== KONFIGURASI FIREBASE =================
+            const firebaseConfig = {
+                apiKey: "AIzaSyAhJScEdO4r3OM7Ix916WcBamg-aKeyZ60",
+                authDomain: "vims-for-influenza.firebaseapp.com",
+                projectId: "vims-for-influenza",
+                storageBucket: "vims-for-influenza.firebasestorage.app",
+                messagingSenderId: "708024534113",
+                appId: "1:708024534113:web:06c0b992a259409aba1620",
+                measurementId: "G-SQ7F4J1ZDY"
             };
 
-            if (action === 'SYNC_ALL') {
-                data.semuaRekod = records;
-                data.tarikh = ''; 
-            } else if (action === 'ADD') {
-                data.tarikh = payload.recordDate || '';
-                data.namaPesakit = payload.patientName;
-                data.kadPengenalan = payload.icNumber; 
-                data.telefon = payload.phoneNumber;
-                data.jenisLawatan = payload.visitType;
-                data.alahan = payload.allergicStatus;
-                data.komorbid = payload.komorbid ? payload.komorbid.join(', ') : '';
-                data.diguna = records.length;
-                data.baki = Math.max(0, stockData.totalDiterima - records.length);
-                data.idRekod = payload.id;
-            } else if (action === 'DELETE') {
-                data.idRekod = payload; 
-                data.tarikh = ''; 
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+            const auth = firebase.auth();
+
+            db.enablePersistence().catch(function(err) {
+                if (err.code == 'failed-precondition') console.warn('Offline persistence aktif pd 1 tab shj.');
+                else if (err.code == 'unimplemented') console.warn('Browser tidak menyokong offline persistence.');
+            });
+
+            // DOM Elements
+            const vaccineForm = document.getElementById('vaccineForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const recordDateInput = document.getElementById('recordDate');
+            const recordsList = document.getElementById('recordsList');
+            const recordCountEl = document.getElementById('recordCount');
+            const toast = document.getElementById('toast');
+            const clearBtn = document.getElementById('clearBtn');
+            const formSection = document.getElementById('formSection');
+            const btnDaftarRekod = document.getElementById('btnDaftarRekod');
+            const icInput = document.getElementById('icNumber');
+            const ageInput = document.getElementById('patientAge');
+            const komorbidGrid = document.getElementById('komorbidGrid');
+            const paginationDiv = document.getElementById('pagination');
+            const prevBtn = document.getElementById('prevPage');
+            const nextBtn = document.getElementById('nextPage');
+            const pageInfo = document.getElementById('pageInfo');
+            const displayJenisVaksin = document.getElementById('displayJenisVaksin');
+            const displayNoBatch = document.getElementById('displayNoBatch');
+            const btnGoogleSheets = document.getElementById('bottomGoogleSheets');
+            const syncBadge = document.getElementById('syncBadge');
+            const dailyBadge = document.getElementById('dailyBadge');
+
+            const valDiterima = document.getElementById('valDiterima');
+            const valDiguna = document.getElementById('valDiguna');
+            const valTopLoading = document.getElementById('valTopLoading');
+            const valBilikRawatan = document.getElementById('valBilikRawatan');
+            const valBaki = document.getElementById('valBaki');
+            const rowTopLoading = document.getElementById('rowTopLoading');
+            const cardDiterima = document.getElementById('cardDiterima');
+            const topBanner = document.getElementById('topBanner');
+
+            const modalDaftarVaksin = document.getElementById('modalDaftarVaksin');
+            const modalJenis = document.getElementById('modalJenisVaksin');
+            const modalNoBatch = document.getElementById('modalNoBatch');
+            const modalJumlahTerima = document.getElementById('modalJumlahTerima');
+            const modalTopLoading = document.getElementById('modalTopLoading');
+            const modalPengeluaran = document.getElementById('modalPengeluaran');
+            const modalOkVaksin = document.getElementById('modalOkVaksin');
+            const modalBatalVaksin = document.getElementById('modalBatalVaksin');
+
+            // Elemen Log Masuk
+            const loginOverlay = document.getElementById('loginOverlay');
+            const loginForm = document.getElementById('loginForm');
+            const loginEmail = document.getElementById('loginEmail');
+            const loginPassword = document.getElementById('loginPassword');
+            const btnLoginSubmit = document.getElementById('btnLoginSubmit');
+            const btnLogout = document.getElementById('btnLogout');
+            const btnBiometricLogin = document.getElementById('btnBiometricLogin');
+
+            // Butang PEN Edit Vaksin Diterima
+            const editPenDiterima = document.getElementById('editPenDiterima');
+
+            // ============ KONFIGURASI BIOMETRIK (CAP JARI) ============
+            const SERVER_KEY = "vims.auth.secure";
+            let isBiometricAvailable = false;
+
+            // Semak sokongan biometrik apabila aplikasi dibuka
+            async function checkBiometricSupport() {
+                if (window.Capacitor && window.Capacitor.Plugins.NativeBiometric) {
+                    const NativeBiometric = window.Capacitor.Plugins.NativeBiometric;
+                    try {
+                        const result = await NativeBiometric.isAvailable();
+                        if (result.isAvailable) {
+                            isBiometricAvailable = true;
+                            btnBiometricLogin.style.display = 'flex';
+                        }
+                    } catch (e) {
+                        console.log("Biometrik tidak tersedia.", e);
+                    }
+                }
             }
 
-            const controller = new AbortController(); 
-            const timeoutId = setTimeout(() => controller.abort(), 10000);
-            try {
-                const response = await fetch(sheetUrl, {
-                    method: 'POST', 
-                    body: JSON.stringify(data), 
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    signal: controller.signal
+            // Fungsi log masuk guna cap jari
+            btnBiometricLogin.addEventListener('click', async () => {
+                if (!isBiometricAvailable) return;
+                const NativeBiometric = window.Capacitor.Plugins.NativeBiometric;
+
+                try {
+                    await NativeBiometric.verifyIdentity({
+                        reason: "Sahkan identiti untuk log masuk VIMS",
+                        title: "Log Masuk Biometrik",
+                        subtitle: "Gunakan pengimbas cap jari",
+                        description: "Sila imbas jari anda"
+                    });
+
+                    const credentials = await NativeBiometric.getCredentials({
+                        server: SERVER_KEY
+                    });
+
+                    btnLoginSubmit.disabled = true;
+                    btnBiometricLogin.disabled = true;
+                    btnBiometricLogin.style.opacity = '0.5';
+
+                    await auth.signInWithEmailAndPassword(credentials.username, credentials.password);
+                    showToast('Log masuk biometrik berjaya!', true);
+
+                } catch (error) {
+                    console.error("Ralat Biometrik:", error);
+                    if (error.code === 'UserCancel') return;
+                    showToast('Cap jari gagal atau tiada rekod. Sila log masuk guna e-mel buat kali pertama.', false);
+                } finally {
+                    btnLoginSubmit.disabled = false;
+                    btnBiometricLogin.disabled = false;
+                    btnBiometricLogin.style.opacity = '1';
+                }
+            });
+
+            // ============ URL GOOGLE SHEETS ============
+            const DEFAULT_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzSBTq0BdfymywWnJqFTUm0hft8V1WQADu-7zzBKdTerUtMltE1Vh94DGWlZ64QSZXc/exec';
+
+            // ============ PEMETAAN KOMORBID KE SINGKATAN ============
+            const komorbidMap = {
+                'Diabetes': 'DM',
+                'Hipertensi': 'HPT',
+                'Dyslipidemia': 'Dys',
+                'Respiratory': 'RD',
+                'Obesiti': 'Obes',
+                'Cardiovascular Disease': 'CVD',
+                'Chronic Kidney Disease': 'CKD'
+            };
+
+            function mapKomorbid(value) {
+                return komorbidMap[value] || value;
+            }
+
+            let records = [];
+            let stockData = { totalDiterima: 0, topLoading: 0, bilikRawatan: 0, jenisVaksin: '', noBatch: '' };
+
+            let currentPage = 1;
+            let isSending = false;
+            let editingRecordId = null;
+
+            let unsubRecords = null;
+            let unsubStock = null;
+            let isAppInitialized = false;
+
+            // --- SISTEM LOG MASUK & AUTHENTICATION ---
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    loginOverlay.classList.remove('active');
+                    if (!isAppInitialized) {
+                        initApp();
+                    } else {
+                        setupRealtimeListeners();
+                    }
+                } else {
+                    loginOverlay.classList.add('active');
+                    checkBiometricSupport();
+                    if (unsubRecords) unsubRecords();
+                    if (unsubStock) unsubStock();
+                    records = [];
+                    renderRecords();
+                }
+            });
+
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = loginEmail.value.trim();
+                const password = loginPassword.value.trim();
+
+                btnLoginSubmit.disabled = true;
+                btnLoginSubmit.textContent = 'Menyemak...';
+
+                try {
+                    await auth.signInWithEmailAndPassword(email, password);
+
+                    if (isBiometricAvailable) {
+                        try {
+                            const NativeBiometric = window.Capacitor.Plugins.NativeBiometric;
+                            await NativeBiometric.setCredentials({
+                                username: email,
+                                password: password,
+                                server: SERVER_KEY
+                            });
+                        } catch (err) { console.log("Gagal simpan kredensial biometrik.", err); }
+                    }
+
+                    loginForm.reset();
+                    showToast('Log masuk berjaya!', true);
+                } catch (error) {
+                    console.error(error);
+                    showToast('Log masuk gagal. Sila semak e-mel dan kata laluan.', false);
+                } finally {
+                    btnLoginSubmit.disabled = false;
+                    btnLoginSubmit.textContent = 'Log Masuk';
+                }
+            });
+
+            btnLogout.addEventListener('click', async () => {
+                if (confirm('Anda pasti mahu log keluar dari sistem?')) {
+                    try {
+                        await auth.signOut();
+                    } catch (e) { console.error(e); }
+                }
+            });
+
+            function getPageSize() { return window.innerWidth >= 768 ? 9 : 5; }
+
+            function setTodayDate() {
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                const mm = String(today.getMonth() + 1).padStart(2, '0');
+                const dd = String(today.getDate()).padStart(2, '0');
+                if (recordDateInput) recordDateInput.value = `${yyyy}-${mm}-${dd}`;
+            }
+
+            // =========================================================
+            // FUNGSI SANITASI TARIKH
+            // =========================================================
+            function sanitizeRecordDate(r) {
+                let displayDate = '-';
+                let displayTime = '';
+                let inputDate = '';
+
+                if (r.recordDate) {
+                    const parts = r.recordDate.split('-');
+                    if (parts.length === 3) {
+                        const y = parts[0];
+                        const m = parts[1];
+                        const d = parts[2];
+                        displayDate = `${d}/${m}/${y}`;
+                        inputDate = r.recordDate;
+                    }
+                } else {
+                    let fallbackObj = new Date();
+                    if (r.createdAt) {
+                        const cDate = new Date(r.createdAt);
+                        if (!isNaN(cDate)) fallbackObj = cDate;
+                    }
+                    const fbDD = String(fallbackObj.getDate()).padStart(2, '0');
+                    const fbMM = String(fallbackObj.getMonth() + 1).padStart(2, '0');
+                    const fbYYYY = fallbackObj.getFullYear();
+                    displayDate = `${fbDD}/${fbMM}/${fbYYYY}`;
+                    inputDate = `${fbYYYY}-${fbMM}-${fbDD}`;
+                }
+
+                const ts = r.timestamp || '';
+                const matchTime = ts.match(/\b(\d{1,2}):(\d{2})\s?(AM|PM|am|pm)\b/);
+                if (matchTime) {
+                    displayTime = matchTime[0].toUpperCase();
+                } else {
+                    let fallbackObj = new Date();
+                    if (r.createdAt) {
+                        const cDate = new Date(r.createdAt);
+                        if (!isNaN(cDate)) fallbackObj = cDate;
+                    }
+                    let h = fallbackObj.getHours();
+                    let ampm = h >= 12 ? 'PM' : 'AM';
+                    h = h % 12 || 12;
+                    const min = String(fallbackObj.getMinutes()).padStart(2, '0');
+                    displayTime = `${h}:${min} ${ampm}`;
+                }
+
+                return { displayDate, displayTime, inputDate };
+            }
+
+            function formatCustomTimestamp(yyyy_mm_dd, originalDateObj = new Date()) {
+                if (!yyyy_mm_dd) {
+                    const now = new Date();
+                    yyyy_mm_dd = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+                }
+                const parts = yyyy_mm_dd.split('-');
+                if (parts.length !== 3) return "-";
+
+                const yyyy = parts;
+                const mm = parts;
+                const dd = parts;
+
+                let h = originalDateObj.getHours();
+                let ampm = h >= 12 ? 'PM' : 'AM';
+                h = h % 12 || 12;
+                const min = String(originalDateObj.getMinutes()).padStart(2, '0');
+
+                return `${dd}/${mm}/${yyyy} | ${h}:${min} ${ampm}`;
+            }
+
+            function setupRealtimeListeners() {
+                unsubRecords = db.collection('vims_records').onSnapshot((snapshot) => {
+                    records = [];
+                    snapshot.forEach(doc => records.push(doc.data()));
+                    renderRecords();
+                    renderDashboard();
+                }, (error) => console.error("Ralat Realtime Rekod:", error));
+
+                unsubStock = db.collection('vims_settings').doc('stockData').onSnapshot((doc) => {
+                    if (doc.exists) {
+                        stockData = doc.data();
+                        if (stockData.jenisVaksin === undefined) stockData.jenisVaksin = '';
+                        if (stockData.noBatch === undefined) stockData.noBatch = '';
+                    } else stockData = { totalDiterima: 0, topLoading: 0, bilikRawatan: 0, jenisVaksin: '',
+                        noBatch: '' };
+                    renderDashboard();
+                    updateDisplayInfo();
+                }, (error) => console.error("Ralat Realtime Stok:", error));
+            }
+
+            async function initApp() {
+                setTodayDate();
+                setupRealtimeListeners();
+                updateBannerHeight();
+                window.addEventListener('resize', updateBannerHeight);
+                window.addEventListener('resize', () => { renderRecords(); });
+                icInput.addEventListener('input', handleICInput);
+                setupKomorbidListeners();
+                setupStockListeners();
+                setupButtons();
+                setupPagination();
+                setupModalVaksinListeners();
+                // Tiada lagi setupModalResetListeners — digantikan dengan editPenDiterima
+                isAppInitialized = true;
+            }
+
+            function updateBannerHeight() { if (topBanner) document.documentElement.style.setProperty('--banner-height', topBanner
+                    .offsetHeight + 'px'); }
+
+            async function saveStock() { await db.collection('vims_settings').doc('stockData').set(stockData); }
+
+            function renderDashboard() {
+                const diguna = records.length;
+                const total = stockData.totalDiterima || 0;
+                const top = stockData.topLoading || 0;
+                const bilik = stockData.bilikRawatan || 0;
+                valDiterima.textContent = total;
+                valDiguna.textContent = diguna;
+                valTopLoading.textContent = top;
+                valBilikRawatan.textContent = bilik;
+                valBaki.textContent = Math.max(0, total - diguna);
+            }
+
+            function updateDisplayInfo() { displayJenisVaksin.textContent = stockData.jenisVaksin || '-';
+                displayNoBatch.textContent = stockData.noBatch || '-'; }
+
+            function updateDailyBadge() {
+                const today = new Date();
+                const dd = String(today.getDate()).padStart(2, '0');
+                const mm = String(today.getMonth() + 1).padStart(2, '0');
+                const yyyy = today.getFullYear();
+                const todayStr = `${dd}/${mm}/${yyyy}`;
+
+                const count = records.filter(r => {
+                    const safe = sanitizeRecordDate(r);
+                    return safe.displayDate === todayStr;
+                }).length;
+
+                dailyBadge.textContent = count;
+                if (count > 0) {
+                    dailyBadge.classList.add('has-records');
+                    dailyBadge.style.transform = 'scale(1.2)';
+                    setTimeout(() => dailyBadge.style.transform = 'scale(1)', 200);
+                } else dailyBadge.classList.remove('has-records');
+            }
+
+            function handleICInput(e) {
+                let val = e.target.value.replace(/[^0-9]/g, '');
+                if (val.length > 12) val = val.slice(0, 12);
+                let formatted = '';
+                for (let i = 0; i < val.length; i++) {
+                    if (i === 6 || i === 8) formatted += '-';
+                    formatted += val[i];
+                }
+                e.target.value = formatted;
+                const raw = val.replace(/-/g, '');
+                if (raw.length >= 6) {
+                    const yy = parseInt(raw.substring(0, 2), 10),
+                        mm = parseInt(raw.substring(2, 4), 10),
+                        dd = parseInt(raw.substring(4, 6), 10);
+                    const now = new Date();
+                    const currentYear = now.getFullYear();
+                    let fullYear = yy > (currentYear % 100) ? 1900 + yy : 2000 + yy;
+                    const birth = new Date(fullYear, mm - 1, dd);
+                    if (isNaN(birth)) { ageInput.value = '-'; return; }
+                    let age = currentYear - fullYear;
+                    if (now < new Date(currentYear, mm - 1, dd)) age--;
+                    ageInput.value = age >= 0 ? age : '-';
+                } else ageInput.value = '-';
+            }
+
+            function setupKomorbidListeners() {
+                komorbidGrid.querySelectorAll('.komorbid-item').forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const cb = this.querySelector('input');
+                        cb.checked = !cb.checked;
+                        this.classList.toggle('selected', cb.checked);
+                    });
                 });
-                clearTimeout(timeoutId);
-                if (response.ok) { 
-                    showToast('Data disegerakkan (Google Sheets)', true); 
-                    syncBadge.classList.add('show'); 
-                    setTimeout(() => syncBadge.classList.remove('show'), 3000);
-                } else { showToast('Gagal menyegerakkan data.', false); }
-            } catch (error) {
-                if (error.name === 'AbortError') showToast('Masa tamat. Pastikan internet stabil.', false);
-                else showToast('Gagal menghubungi Google Sheets.', false);
-            } finally { 
-                clearTimeout(timeoutId); 
-                isSending = false; 
-                btnGoogleSheets.disabled = false; 
-                btnGoogleSheets.style.opacity = ''; 
             }
-        }
 
-        function getTotalPages() { return Math.ceil(records.length / getPageSize()) || 1; }
-        
-        function renderRecords() {
-            const totalPages = getTotalPages();
-            if (currentPage > totalPages) currentPage = totalPages;
-            if (currentPage < 1) currentPage = 1;
-            recordsList.innerHTML = '';
-            recordCountEl.textContent = records.length;
-            
-            updateDailyBadge();
-            const currentSize = getPageSize();
+            function getSelectedKomorbid() { return Array.from(komorbidGrid.querySelectorAll('input:checked')).map(cb => cb
+                    .value); }
 
-            if (!records.length) {
-                recordsList.innerHTML = '<div class="empty-state"><p class="empty-text">Tiada rekod vaksinasi lagi.<br>Daftarkan rekod pertama anda.</p></div>';
-                paginationDiv.style.display = 'none';
-                return;
+            function resetKomorbid() { komorbidGrid.querySelectorAll('input').forEach(cb => { cb.checked = false;
+                    cb.closest('.komorbid-item').classList.remove('selected'); }); }
+
+            function setupStockListeners() {
+                rowTopLoading.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    const available = stockData.topLoading || 0;
+                    if (available <= 0) { showToast('Tiada stok di Top Loading.', false); return; }
+                    let input = prompt(`Pindahkan berapa dos ke Bilik Rawatan? (Maks: ${available}):`, '');
+                    if (input === null) return;
+                    let amount = parseInt(input.replace(/[^0-9]/g, ''), 10);
+                    if (isNaN(amount) || amount <= 0) { showToast('Nombor tidak sah.', false); return; }
+                    if (amount > available) { showToast(`Maksimum ${available}.`, false); return; }
+
+                    stockData.topLoading -= amount;
+                    stockData.bilikRawatan += amount;
+                    try {
+                        await saveStock();
+                        showToast(`${amount} dos dipindahkan ke Bilik Rawatan.`, true);
+                    } catch (error) {
+                        console.error("Ralat pindah stok:", error);
+                        showToast('Gagal pindahkan stok.', false);
+                    }
+                });
             }
-            const sorted = [...records].sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
-            const start = (currentPage-1) * currentSize;
-            const page = sorted.slice(start, start + currentSize);
 
-            let mobileHTML = '<div class="mobile-records">';
-            let desktopHTML = `<div class="desktop-records">
+            // =============================================================
+            // FUNGSI EDIT JUMLAH VAKSIN DITERIMA (GANTI RESET KAUNTER)
+            // =============================================================
+            function setupEditVaksinDiterima() {
+                // Butang pen di penjuru atas kanan
+                editPenDiterima.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+
+                    const currentTotal = stockData.totalDiterima || 0;
+                    let input = prompt(`Edit Jumlah Vaksin Diterima (kini: ${currentTotal}):`, String(currentTotal));
+                    if (input === null) return;
+
+                    input = input.trim();
+                    if (input === '') { showToast('Tiada perubahan.', false); return; }
+
+                    const newTotal = parseInt(input.replace(/[^0-9]/g, ''), 10);
+                    if (isNaN(newTotal) || newTotal < 0) {
+                        showToast('Sila masukkan nombor yang sah (0 atau lebih).', false);
+                        return;
+                    }
+
+                    // Kira perbezaan untuk laraskan topLoading / bilikRawatan
+                    const diff = newTotal - currentTotal;
+
+                    // Jika jumlah baru lebih kecil dari jumlah yang telah digunakan, tidak dibenarkan
+                    const usedCount = records.length;
+                    if (newTotal < usedCount) {
+                        showToast(`Jumlah diterima (${newTotal}) tidak boleh kurang dari jumlah digunakan (${usedCount}).`, false);
+                        return;
+                    }
+
+                    // Tambah perbezaan ke topLoading (atau kurangkan jika negatif)
+                    // Jika negative, kita perlu pastikan topLoading & bilikRawatan cukup
+                    if (diff < 0) {
+                        const totalSimpanan = (stockData.topLoading || 0) + (stockData.bilikRawatan || 0);
+                        if (Math.abs(diff) > totalSimpanan) {
+                            showToast(`Jumlah simpanan (${totalSimpanan}) tidak mencukupi untuk pengurangan sebanyak ${Math.abs(diff)}.`, false);
+                            return;
+                        }
+                        // Kurangkan dari topLoading dahulu, kemudian bilikRawatan
+                        let remaining = Math.abs(diff);
+                        if (stockData.topLoading >= remaining) {
+                            stockData.topLoading -= remaining;
+                            remaining = 0;
+                        } else {
+                            remaining -= stockData.topLoading;
+                            stockData.topLoading = 0;
+                            if (stockData.bilikRawatan >= remaining) {
+                                stockData.bilikRawatan -= remaining;
+                                remaining = 0;
+                            } else {
+                                // Jika masih ada baki, tak sepatutnya berlaku kerana jumlah simpanan mencukupi
+                                stockData.bilikRawatan = 0;
+                                remaining = 0;
+                            }
+                        }
+                    } else {
+                        // diff > 0: tambah ke topLoading
+                        stockData.topLoading = (stockData.topLoading || 0) + diff;
+                    }
+
+                    stockData.totalDiterima = newTotal;
+
+                    try {
+                        await saveStock();
+                        showToast(`Jumlah diterima dikemaskini kepada ${newTotal}.`, true);
+                    } catch (error) {
+                        console.error("Ralat kemaskini stok:", error);
+                        showToast('Gagal kemaskini stok.', false);
+                    }
+                });
+
+                // Klik pada kad juga membuka editor (untuk kemudahan)
+                cardDiterima.addEventListener('click', (e) => {
+                    // Elakkan jika klik pada butang pen (supaya tak double trigger)
+                    if (e.target.closest('.edit-pen-btn')) return;
+                    editPenDiterima.click();
+                });
+            }
+
+            // =============================================================
+
+            function setupModalVaksinListeners() {
+                function updateTopCalculation() {
+                    const jumlah = parseInt(modalJumlahTerima.value) || 0;
+                    const keluar = parseInt(modalPengeluaran.value) || 0;
+                    modalTopLoading.value = Math.max(0, jumlah - keluar);
+                }
+                modalJumlahTerima.addEventListener('input', updateTopCalculation);
+                modalPengeluaran.addEventListener('input', () => {
+                    let keluar = parseInt(modalPengeluaran.value) || 0;
+                    const jumlah = parseInt(modalJumlahTerima.value) || 0;
+                    if (keluar > jumlah) modalPengeluaran.value = jumlah;
+                    updateTopCalculation();
+                });
+                modalBatalVaksin.addEventListener('click', closeModalVaksin);
+                modalDaftarVaksin.addEventListener('click', (e) => { if (e.target === modalDaftarVaksin) closeModalVaksin(); });
+
+                modalOkVaksin.addEventListener('click', async () => {
+                    const jenis = modalJenis.value.trim();
+                    const batch = modalNoBatch.value.trim();
+                    const jumlahTerima = parseInt(modalJumlahTerima.value) || 0;
+                    const pengeluaran = parseInt(modalPengeluaran.value) || 0;
+
+                    if (!jenis) { showToast('Sila masukkan Jenis Vaksin.', false); return; }
+                    if (!batch) { showToast('Sila masukkan No Batch Vaksin.', false); return; }
+                    if (jumlahTerima <= 0) { showToast('Jumlah Terima mesti lebih dari 0.', false); return; }
+                    if (pengeluaran > jumlahTerima) { showToast('Pengeluaran tidak boleh melebihi Jumlah Terima.',
+                        false); return; }
+
+                    stockData.jenisVaksin = jenis;
+                    stockData.noBatch = batch;
+                    stockData.totalDiterima += jumlahTerima;
+                    stockData.topLoading += (jumlahTerima - pengeluaran);
+                    stockData.bilikRawatan += pengeluaran;
+
+                    try {
+                        await saveStock();
+                        closeModalVaksin();
+                        showToast('Stok vaksin berjaya dikemas kini.', true);
+                    } catch (error) {
+                        console.error("Ralat menyimpan stok:", error);
+                        showToast('Gagal! Sila pastikan Rules Firebase adalah "true".', false);
+                    }
+                });
+            }
+
+            function openModalVaksin() {
+                modalJenis.value = stockData.jenisVaksin || '';
+                modalNoBatch.value = stockData.noBatch || '';
+                modalJumlahTerima.value = '';
+                modalPengeluaran.value = '0';
+                modalTopLoading.value = '0';
+                modalDaftarVaksin.classList.add('active');
+                setTimeout(() => modalJumlahTerima.focus(), 100);
+            }
+
+            function closeModalVaksin() { modalDaftarVaksin.classList.remove('active'); }
+
+            function setupButtons() {
+                btnDaftarRekod.addEventListener('click', () => {
+                    if (formSection.classList.contains('expanded')) {
+                        formSection.classList.remove('expanded');
+                        resetForm(false);
+                    } else {
+                        formSection.classList.add('expanded');
+                        if (window.innerWidth < 768) formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        setTimeout(() => document.getElementById('recordDate').focus(), 400);
+                    }
+                });
+                document.getElementById('bottomDaftarVaksin').addEventListener('click', openModalVaksin);
+                document.getElementById('bottomJumlahHarian').addEventListener('click', () => showToast(
+                    `Jumlah pesakit hari ini: ${dailyBadge.textContent}`, true));
+                document.getElementById('bottomGoogleSheets').addEventListener('click', () => {
+                    showToast('Menyegerakkan semua data ke Sheets...', true);
+                    syncToCloud('SYNC_ALL');
+                });
+
+                // Pasang fungsi edit vaksin diterima (ganti reset kaunter)
+                setupEditVaksinDiterima();
+            }
+
+            async function syncToCloud(action, payload = null) {
+                if (isSending) return;
+                if (!navigator.onLine) { showToast('Tiada internet. Data disimpan di Firebase.', false); return; }
+
+                isSending = true;
+                btnGoogleSheets.disabled = true;
+                btnGoogleSheets.style.opacity = '0.5';
+                const sheetUrl = DEFAULT_SHEET_URL;
+
+                let data = {
+                    action: action,
+                    kodFasiliti: '21-02060057',
+                    jenisVaksin: stockData.jenisVaksin || '-',
+                    noBatch: stockData.noBatch || '-',
+                    diterima: stockData.totalDiterima || 0,
+                    topLoading: stockData.topLoading || 0,
+                    bilikRawatan: stockData.bilikRawatan || 0
+                };
+
+                if (action === 'SYNC_ALL') {
+                    data.semuaRekod = records;
+                    data.tarikh = '';
+                } else if (action === 'ADD') {
+                    data.tarikh = payload.recordDate || '';
+                    data.namaPesakit = payload.patientName;
+                    data.kadPengenalan = payload.icNumber;
+                    data.telefon = payload.phoneNumber;
+                    data.jenisLawatan = payload.visitType;
+                    data.alahan = payload.allergicStatus;
+                    data.komorbid = payload.komorbid ? payload.komorbid.join(', ') : '';
+                    data.diguna = records.length;
+                    data.baki = Math.max(0, stockData.totalDiterima - records.length);
+                    data.idRekod = payload.id;
+                } else if (action === 'DELETE') {
+                    data.idRekod = payload;
+                    data.tarikh = '';
+                }
+
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000);
+                try {
+                    const response = await fetch(sheetUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+                    if (response.ok) {
+                        showToast('Data disegerakkan (Google Sheets)', true);
+                        syncBadge.classList.add('show');
+                        setTimeout(() => syncBadge.classList.remove('show'), 3000);
+                    } else { showToast('Gagal menyegerakkan data.', false); }
+                } catch (error) {
+                    if (error.name === 'AbortError') showToast('Masa tamat. Pastikan internet stabil.', false);
+                    else showToast('Gagal menghubungi Google Sheets.', false);
+                } finally {
+                    clearTimeout(timeoutId);
+                    isSending = false;
+                    btnGoogleSheets.disabled = false;
+                    btnGoogleSheets.style.opacity = '';
+                }
+            }
+
+            function getTotalPages() { return Math.ceil(records.length / getPageSize()) || 1; }
+
+            function renderRecords() {
+                const totalPages = getTotalPages();
+                if (currentPage > totalPages) currentPage = totalPages;
+                if (currentPage < 1) currentPage = 1;
+                recordsList.innerHTML = '';
+                recordCountEl.textContent = records.length;
+
+                updateDailyBadge();
+                const currentSize = getPageSize();
+
+                if (!records.length) {
+                    recordsList.innerHTML =
+                        '<div class="empty-state"><p class="empty-text">Tiada rekod vaksinasi lagi.<br>Daftarkan rekod pertama anda.</p></div>';
+                    paginationDiv.style.display = 'none';
+                    return;
+                }
+                const sorted = [...records].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                const start = (currentPage - 1) * currentSize;
+                const page = sorted.slice(start, start + currentSize);
+
+                let mobileHTML = '<div class="mobile-records">';
+                let desktopHTML =
+                    `<div class="desktop-records">
                 <table class="records-table">
                     <thead><tr><th>Tarikh & Masa</th><th>Nama Penuh</th><th>RN (KP)</th><th>Telefon</th><th>Jenis Lawatan</th><th>Alahan</th><th>Komorbid</th><th style="text-align:center;">Tindakan</th></tr></thead>
                     <tbody>`;
 
-            page.forEach(r => {
-                const initials = r.patientName ? r.patientName.split(' ').map(w => w).join('').substring(0,2).toUpperCase() : '?';
-                let displayIC = '-';
-                if (r.icNumber && r.icNumber.length >= 4) displayIC = r.icNumber.replace(/-/g, '').slice(-4);
+                page.forEach(r => {
+                    const initials = r.patientName ? r.patientName.split(' ').map(w => w).join('').substring(0, 2)
+                        .toUpperCase() : '?';
+                    let displayIC = '-';
+                    if (r.icNumber && r.icNumber.length >= 4) displayIC = r.icNumber.replace(/-/g, '').slice(-4);
 
-                const tel = r.phoneNumber ? escapeHtml(r.phoneNumber) : '-';
-                const visit = r.visitType ? escapeHtml(r.visitType) : '-';
-                const allergic = r.allergicStatus ? escapeHtml(r.allergicStatus) : 'Tidak';
-                const alahanClass = allergic === 'Ya' ? 'badge-alahan-ya' : 'badge-alahan-tidak';
-                
-                const safeDate = sanitizeRecordDate(r);
-                const dateHTML = `
-                    <div style="font-weight: 600; color: var(--primary);">${escapeHtml(safeDate.displayDate)}</div>
-                    <div style="font-size: 0.65rem; color: var(--text-secondary); margin-top: 2px;">${escapeHtml(safeDate.displayTime)}</div>
-                `;
-                const mobileDateText = `${escapeHtml(safeDate.displayDate)} | ${escapeHtml(safeDate.displayTime)}`;
+                    const tel = r.phoneNumber ? escapeHtml(r.phoneNumber) : '-';
+                    const visit = r.visitType ? escapeHtml(r.visitType) : '-';
+                    const allergic = r.allergicStatus ? escapeHtml(r.allergicStatus) : 'Tidak';
+                    const alahanClass = allergic === 'Ya' ? 'badge-alahan-ya' : 'badge-alahan-tidak';
 
-                const badgesMobile = (r.komorbid && r.komorbid.length) ? 
-                    r.komorbid.map(k => `<span class="komorbid-badge">${escapeHtml(mapKomorbid(k))}</span>`).join('') : '';
-                const badgesDesktop = (r.komorbid && r.komorbid.length) ? 
-                    r.komorbid.map(k => `<span class="badge-table badge-komorbid-table">${escapeHtml(mapKomorbid(k))}</span>`).join('') : '-';
+                    const safeDate = sanitizeRecordDate(r);
+                    const dateHTML = `
+                        <div style="font-weight: 600; color: var(--primary);">${escapeHtml(safeDate.displayDate)}</div>
+                        <div style="font-size: 0.65rem; color: var(--text-secondary); margin-top: 2px;">${escapeHtml(safeDate.displayTime)}</div>
+                    `;
+                    const mobileDateText = `${escapeHtml(safeDate.displayDate)} | ${escapeHtml(safeDate.displayTime)}`;
 
-                const actionButtonsHTML = `
-                    <div class="action-group" style="justify-content:center;">
-                        <button type="button" class="icon-btn edit-btn" data-id="${r.id}" title="Kemaskini">
-                            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                        </button>
-                        <button type="button" class="icon-btn delete-btn" data-id="${r.id}" title="Padam">
-                            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                        </button>
-                    </div>
-                `;
+                    const badgesMobile = (r.komorbid && r.komorbid.length) ?
+                        r.komorbid.map(k => `<span class="komorbid-badge">${escapeHtml(mapKomorbid(k))}</span>`).join(
+                        '') : '';
+                    const badgesDesktop = (r.komorbid && r.komorbid.length) ?
+                        r.komorbid.map(k =>
+                            `<span class="badge-table badge-komorbid-table">${escapeHtml(mapKomorbid(k))}</span>`
+                        ).join('') : '-';
 
-                mobileHTML += `
-                    <div class="record-item">
-                        <div class="record-avatar">${initials}</div>
-                        <div class="record-info">
-                            <div class="record-name">${escapeHtml(r.patientName)}</div>
-                            <div class="record-detail">
-                                RN: <span style="font-weight:600;">${displayIC}</span> | Umur: ${r.age ?? '-'}<br>
-                                Tel: ${tel} | ${visit} | Alahan: <span style="font-weight:600;">${allergic}</span>
-                            </div>
-                            ${badgesMobile ? `<div class="record-badges">${badgesMobile}</div>` : ''}
-                            <div class="record-timestamp">${mobileDateText}</div>
+                    const actionButtonsHTML = `
+                        <div class="action-group" style="justify-content:center;">
+                            <button type="button" class="icon-btn edit-btn" data-id="${r.id}" title="Kemaskini">
+                                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            </button>
+                            <button type="button" class="icon-btn delete-btn" data-id="${r.id}" title="Padam">
+                                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            </button>
                         </div>
-                        ${actionButtonsHTML}
-                    </div>`;
+                    `;
 
-                desktopHTML += `
-                    <tr>
-                        <td>${dateHTML}</td>
-                        <td style="font-weight:500; color:var(--primary);">${escapeHtml(r.patientName)}</td>
-                        <td style="font-family:monospace; font-weight:600; letter-spacing:0.5px;">${displayIC}</td>
-                        <td>${tel}</td>
-                        <td><span class="badge-table">${visit}</span></td>
-                        <td><span class="badge-table ${alahanClass}">${allergic}</span></td>
-                        <td>${badgesDesktop}</td>
-                        <td>${actionButtonsHTML}</td>
-                    </tr>`;
-            });
+                    mobileHTML += `
+                        <div class="record-item">
+                            <div class="record-avatar">${initials}</div>
+                            <div class="record-info">
+                                <div class="record-name">${escapeHtml(r.patientName)}</div>
+                                <div class="record-detail">
+                                    RN: <span style="font-weight:600;">${displayIC}</span> | Umur: ${r.age ?? '-'}<br>
+                                    Tel: ${tel} | ${visit} | Alahan: <span style="font-weight:600;">${allergic}</span>
+                                </div>
+                                ${badgesMobile ? `<div class="record-badges">${badgesMobile}</div>` : ''}
+                                <div class="record-timestamp">${mobileDateText}</div>
+                            </div>
+                            ${actionButtonsHTML}
+                        </div>`;
 
-            mobileHTML += '</div>';
-            desktopHTML += '</tbody></table></div>';
-
-            recordsList.innerHTML = mobileHTML + desktopHTML;
-            paginationDiv.style.display = records.length > currentSize ? 'flex' : 'none';
-            prevBtn.disabled = currentPage <= 1; nextBtn.disabled = currentPage >= totalPages;
-            pageInfo.textContent = `Halaman ${currentPage} / ${totalPages}`;
-
-            // LOGIK PEMADAMAN BAHARU DI SINI
-            document.querySelectorAll('.delete-btn').forEach(b => {
-                b.addEventListener('click', async e => {
-                    e.stopPropagation(); 
-                    const deleteId = b.dataset.id;
-                    if (confirm('Padam rekod ini? 1 Dos akan dikembalikan semula ke simpanan Bilik Rawatan.')) {
-                        try {
-                            await db.collection('vims_records').doc(deleteId).delete();
-                            
-                            // Kembalikan 1 dos ke Bilik Rawatan
-                            stockData.bilikRawatan = (stockData.bilikRawatan || 0) + 1;
-                            await saveStock();
-
-                            showToast('Rekod dipadam & 1 dos dikembalikan', true); 
-                            syncBadge.classList.remove('show');
-                            setTimeout(() => syncToCloud('DELETE', deleteId), 1000);
-                        } catch(err) { 
-                            showToast('Gagal padam rekod', false); 
-                            console.error(err); 
-                        }
-                    }
+                    desktopHTML += `
+                        <tr>
+                            <td>${dateHTML}</td>
+                            <td style="font-weight:500; color:var(--primary);">${escapeHtml(r.patientName)}</td>
+                            <td style="font-family:monospace; font-weight:600; letter-spacing:0.5px;">${displayIC}</td>
+                            <td>${tel}</td>
+                            <td><span class="badge-table">${visit}</span></td>
+                            <td><span class="badge-table ${alahanClass}">${allergic}</span></td>
+                            <td>${badgesDesktop}</td>
+                            <td>${actionButtonsHTML}</td>
+                        </tr>`;
                 });
-            });
 
-            document.querySelectorAll('.edit-btn').forEach(b => {
-                b.addEventListener('click', e => {
-                    e.stopPropagation(); 
-                    const id = b.dataset.id;
-                    const rec = records.find(x => x.id === id);
-                    if (rec) {
-                        const safeDate = sanitizeRecordDate(rec);
-                        document.getElementById('recordDate').value = safeDate.inputDate;
-                        document.getElementById('patientName').value = rec.patientName || '';
-                        document.getElementById('icNumber').value = rec.icNumber || '';
-                        document.getElementById('patientAge').value = rec.age || '-';
-                        document.getElementById('phoneNumber').value = rec.phoneNumber || '';
-                        document.getElementById('visitType').value = rec.visitType || 'Walk in';
-                        document.getElementById('allergicStatus').value = rec.allergicStatus || 'Tidak';
+                mobileHTML += '</div>';
+                desktopHTML += '</tbody></table></div>';
 
-                        resetKomorbid();
-                        if (rec.komorbid && rec.komorbid.length > 0) {
-                            komorbidGrid.querySelectorAll('.komorbid-item').forEach(item => {
-                                const cb = item.querySelector('input');
-                                if (rec.komorbid.includes(cb.value)) {
-                                    cb.checked = true;
-                                    item.classList.add('selected');
-                                }
-                            });
+                recordsList.innerHTML = mobileHTML + desktopHTML;
+                paginationDiv.style.display = records.length > currentSize ? 'flex' : 'none';
+                prevBtn.disabled = currentPage <= 1;
+                nextBtn.disabled = currentPage >= totalPages;
+                pageInfo.textContent = `Halaman ${currentPage} / ${totalPages}`;
+
+                // LOGIK PEMADAMAN
+                document.querySelectorAll('.delete-btn').forEach(b => {
+                    b.addEventListener('click', async e => {
+                        e.stopPropagation();
+                        const deleteId = b.dataset.id;
+                        if (confirm(
+                                'Padam rekod ini? 1 Dos akan dikembalikan semula ke simpanan Bilik Rawatan.'
+                                )) {
+                            try {
+                                await db.collection('vims_records').doc(deleteId).delete();
+
+                                stockData.bilikRawatan = (stockData.bilikRawatan || 0) + 1;
+                                await saveStock();
+
+                                showToast('Rekod dipadam & 1 dos dikembalikan', true);
+                                syncBadge.classList.remove('show');
+                                setTimeout(() => syncToCloud('DELETE', deleteId), 1000);
+                            } catch (err) {
+                                showToast('Gagal padam rekod', false);
+                                console.error(err);
+                            }
                         }
-
-                        editingRecordId = id; 
-                        submitBtn.textContent = 'Kemaskini Rekod';
-                        formSection.classList.add('expanded');
-                        document.getElementById('patientName').focus();
-                        window.scrollTo({top: formSection.offsetTop - 80, behavior: 'smooth'});
-                    }
+                    });
                 });
-            });
-        }
 
-        function setupPagination() {
-            prevBtn.addEventListener('click', () => { if (currentPage>1) { currentPage--; renderRecords(); } });
-            nextBtn.addEventListener('click', () => { if (currentPage<getTotalPages()) { currentPage++; renderRecords(); } });
-        }
+                document.querySelectorAll('.edit-btn').forEach(b => {
+                    b.addEventListener('click', e => {
+                        e.stopPropagation();
+                        const id = b.dataset.id;
+                        const rec = records.find(x => x.id === id);
+                        if (rec) {
+                            const safeDate = sanitizeRecordDate(rec);
+                            document.getElementById('recordDate').value = safeDate.inputDate;
+                            document.getElementById('patientName').value = rec.patientName || '';
+                            document.getElementById('icNumber').value = rec.icNumber || '';
+                            document.getElementById('patientAge').value = rec.age || '-';
+                            document.getElementById('phoneNumber').value = rec.phoneNumber || '';
+                            document.getElementById('visitType').value = rec.visitType || 'Walk in';
+                            document.getElementById('allergicStatus').value = rec.allergicStatus || 'Tidak';
 
-        function escapeHtml(s) { const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+                            resetKomorbid();
+                            if (rec.komorbid && rec.komorbid.length > 0) {
+                                komorbidGrid.querySelectorAll('.komorbid-item').forEach(item => {
+                                    const cb = item.querySelector('input');
+                                    if (rec.komorbid.includes(cb.value)) {
+                                        cb.checked = true;
+                                        item.classList.add('selected');
+                                    }
+                                });
+                            }
 
-        function resetForm(keepDate = false) {
-            const currentDateStr = document.getElementById('recordDate').value;
-            vaccineForm.reset(); 
-            ageInput.value='-'; 
-            resetKomorbid();
-            if (keepDate && currentDateStr) document.getElementById('recordDate').value = currentDateStr;
-            else setTodayDate(); 
-            editingRecordId = null;
-            submitBtn.textContent = 'Simpan Rekod';
-        }
+                            editingRecordId = id;
+                            submitBtn.textContent = 'Kemaskini Rekod';
+                            formSection.classList.add('expanded');
+                            document.getElementById('patientName').focus();
+                            window.scrollTo({ top: formSection.offsetTop - 80, behavior: 'smooth' });
+                        }
+                    });
+                });
+            }
 
-        vaccineForm.addEventListener('submit', async e => {
-            e.preventDefault();
-            const selectedDateStr = document.getElementById('recordDate').value; 
-            const patientName = document.getElementById('patientName').value.trim();
-            const icNumber = document.getElementById('icNumber').value.trim();
-            const phoneNumber = document.getElementById('phoneNumber').value.trim();
-            const visitType = document.getElementById('visitType').value;
-            const allergicStatus = document.getElementById('allergicStatus').value;
-            const ageVal = ageInput.value;
-            const komorbid = getSelectedKomorbid();
+            function setupPagination() {
+                prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--;
+                        renderRecords(); } });
+                nextBtn.addEventListener('click', () => { if (currentPage < getTotalPages()) { currentPage++;
+                        renderRecords(); } });
+            }
 
-            if (!patientName || !icNumber || !phoneNumber || !selectedDateStr) { showToast('Lengkapkan Tarikh, Nama, KP dan Telefon.', false); return; }
-            if (!/^\d{6}-\d{2}-\d{4}$/.test(icNumber)) { showToast('Format KP tidak sah.', false); return; }
-            if (ageVal === '-' || isNaN(parseInt(ageVal,10))) { showToast('Umur tidak sah.', false); return; }
+            function escapeHtml(s) { const d = document.createElement('div');
+                d.textContent = s || '';
+                return d.innerHTML; }
 
-            if (editingRecordId) {
-                try {
-                    const finalTimestamp = formatCustomTimestamp(selectedDateStr, new Date());
-                    const updateData = {
-                        patientName, icNumber, phoneNumber, visitType, allergicStatus, age: parseInt(ageVal,10), komorbid,
+            function resetForm(keepDate = false) {
+                const currentDateStr = document.getElementById('recordDate').value;
+                vaccineForm.reset();
+                ageInput.value = '-';
+                resetKomorbid();
+                if (keepDate && currentDateStr) document.getElementById('recordDate').value = currentDateStr;
+                else setTodayDate();
+                editingRecordId = null;
+                submitBtn.textContent = 'Simpan Rekod';
+            }
+
+            vaccineForm.addEventListener('submit', async e => {
+                e.preventDefault();
+                const selectedDateStr = document.getElementById('recordDate').value;
+                const patientName = document.getElementById('patientName').value.trim();
+                const icNumber = document.getElementById('icNumber').value.trim();
+                const phoneNumber = document.getElementById('phoneNumber').value.trim();
+                const visitType = document.getElementById('visitType').value;
+                const allergicStatus = document.getElementById('allergicStatus').value;
+                const ageVal = ageInput.value;
+                const komorbid = getSelectedKomorbid();
+
+                if (!patientName || !icNumber || !phoneNumber || !selectedDateStr) { showToast(
+                        'Lengkapkan Tarikh, Nama, KP dan Telefon.', false); return; }
+                if (!/^\d{6}-\d{2}-\d{4}$/.test(icNumber)) { showToast('Format KP tidak sah.', false); return; }
+                if (ageVal === '-' || isNaN(parseInt(ageVal, 10))) { showToast('Umur tidak sah.', false); return; }
+
+                if (editingRecordId) {
+                    try {
+                        const finalTimestamp = formatCustomTimestamp(selectedDateStr, new Date());
+                        const updateData = {
+                            patientName,
+                            icNumber,
+                            phoneNumber,
+                            visitType,
+                            allergicStatus,
+                            age: parseInt(ageVal, 10),
+                            komorbid,
+                            timestamp: finalTimestamp,
+                            recordDate: selectedDateStr
+                        };
+                        await db.collection('vims_records').doc(editingRecordId).update(updateData);
+                        resetForm(true);
+                        if (window.innerWidth < 768) formSection.classList.remove('expanded');
+                        showToast('Rekod dikemaskini & dipulihkan', true);
+                        syncBadge.classList.remove('show');
+                        setTimeout(() => syncToCloud('SYNC_ALL'), 1000);
+                    } catch (err) { showToast('Gagal kemaskini rekod.', false);
+                        console.error(err); }
+                } else {
+                    const stokBilik = stockData.bilikRawatan || 0;
+                    const stokTop = stockData.topLoading || 0;
+                    if (stokBilik > 0) stockData.bilikRawatan--;
+                    else if (stokTop > 0) stockData.topLoading--;
+                    else { showToast('Stok vaksin tidak mencukupi!', false); return; }
+
+                    const now = new Date();
+                    const finalTimestamp = formatCustomTimestamp(selectedDateStr, now);
+                    const newRecord = {
+                        id: 'vax_' + Date.now().toString(36) + Math.random().toString(36).substring(2, 8),
+                        patientName,
+                        icNumber,
+                        phoneNumber,
+                        visitType,
+                        allergicStatus,
+                        age: parseInt(ageVal, 10),
+                        komorbid,
                         timestamp: finalTimestamp,
+                        createdAt: now.toISOString(),
                         recordDate: selectedDateStr
                     };
-                    await db.collection('vims_records').doc(editingRecordId).update(updateData);
-                    resetForm(true);
-                    if (window.innerWidth < 768) formSection.classList.remove('expanded');
-                    showToast('Rekod dikemaskini & dipulihkan', true);
-                    syncBadge.classList.remove('show'); 
-                    setTimeout(() => syncToCloud('SYNC_ALL'), 1000);
-                } catch(err) { showToast('Gagal kemaskini rekod.', false); console.error(err); }
-            } else {
-                const stokBilik = stockData.bilikRawatan || 0; const stokTop = stockData.topLoading || 0;
-                if (stokBilik > 0) stockData.bilikRawatan--;
-                else if (stokTop > 0) stockData.topLoading--;
-                else { showToast('Stok vaksin tidak mencukupi!', false); return; }
 
-                const now = new Date();
-                const finalTimestamp = formatCustomTimestamp(selectedDateStr, now);
-                const newRecord = {
-                    id: 'vax_'+Date.now().toString(36)+Math.random().toString(36).substring(2,8),
-                    patientName, icNumber, phoneNumber, visitType, allergicStatus, age: parseInt(ageVal,10), komorbid,
-                    timestamp: finalTimestamp, 
-                    createdAt: now.toISOString(),
-                    recordDate: selectedDateStr
-                };
-                
-                try {
-                    await db.collection('vims_records').doc(newRecord.id).set(newRecord);
-                    await saveStock();
-                    resetForm(true);
-                    currentPage = 1; 
-                    if (window.innerWidth < 768) {
-                        formSection.classList.remove('expanded');
-                        document.getElementById('recordsSection').scrollIntoView({ behavior:'smooth' });
-                    }
-                    showToast('Rekod berjaya disimpan', true);
-                    syncBadge.classList.remove('show'); setTimeout(() => syncToCloud('ADD', newRecord), 1000);
-                } catch(err) { showToast('Gagal simpan rekod.', false); console.error(err); }
+                    try {
+                        await db.collection('vims_records').doc(newRecord.id).set(newRecord);
+                        await saveStock();
+                        resetForm(true);
+                        currentPage = 1;
+                        if (window.innerWidth < 768) {
+                            formSection.classList.remove('expanded');
+                            document.getElementById('recordsSection').scrollIntoView({ behavior: 'smooth' });
+                        }
+                        showToast('Rekod berjaya disimpan', true);
+                        syncBadge.classList.remove('show');
+                        setTimeout(() => syncToCloud('ADD', newRecord), 1000);
+                    } catch (err) { showToast('Gagal simpan rekod.', false);
+                        console.error(err); }
+                }
+            });
+
+            clearBtn.addEventListener('click', () => {
+                if (confirm('Set semula borang?')) { resetForm(false); }
+            });
+
+            let toastTimer;
+
+            function showToast(msg, success) {
+                clearTimeout(toastTimer);
+                toast.textContent = msg;
+                toast.className = 'toast' + (success ? ' success' : '');
+                void toast.offsetWidth;
+                toast.classList.add('show');
+                toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
             }
-        });
 
-        clearBtn.addEventListener('click', () => { 
-            if (confirm('Set semula borang?')) { resetForm(false); } 
-        });
-
-        let toastTimer;
-        function showToast(msg, success) {
-            clearTimeout(toastTimer); toast.textContent = msg; toast.className = 'toast' + (success ? ' success' : '');
-            void toast.offsetWidth; toast.classList.add('show');
-            toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
-        }
-
-    })();
-</script>
+        })();
+    </script>
 </body>
 </html>
